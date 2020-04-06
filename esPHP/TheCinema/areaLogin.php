@@ -6,6 +6,18 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 		<style>
+		/*il b_container e' il contenitore di tutte le tabelle*/
+			.b_container {
+					padding: 0px;
+					border: 0px;
+					margin: 20px 0px;
+					width: 100%;
+			}
+			/*il left_tpart e' il contenitore della tabella sulla sinistra contenente i dati dei biglietti Acquistati*/
+			.left_tpart {
+				width: 40%;
+				left: 0%;
+			}
 
 			.button2 {
 				border: none;
@@ -71,36 +83,38 @@
 			//Query estrapola tutti i film che ho guardato fino a oggi
 			//creo la query
 			$u = $_SESSION["user"];
-			$sql = "select f.* from acquistabiglietto acqb join utente u on(acqb.idCliente = u.idUtente)
+			$sql = "select f.*, p.*, acqb.*,count(acqb.codTransazione) as num_posti_comprati from acquistabiglietto acqb join utente u on(acqb.idCliente = u.idUtente)
 				join proiezione p on(acqb.idProiezione = p.idProiezione)
-				join film f on(p.codiceFilm = f.codiceFilm) where u.username = \"$u\" ";
+				join film f on(p.codiceFilm = f.codiceFilm) where u.username = \"$u\"
+				group by f.nome, acqb.dataAcquisto";
 
 
 			//eseguo la Query
 			$result = $conn->query($sql);
 			//controllo se ho dei risultati
-			$msg=" <h3 align=\"center\">Prenotazioni effettuate da $u</h3> <table  class=\"table\">
-
+			//il b_container e' il contenitore di tutte le tabelle
+			$msg = " <h3 align=\"center\">Prenotazioni effettuate da $u</h3> <table  class=\"table\">
 									<thead class=\"thead-dark\">
 										<tr>
-											<th scope=\"col\">codiceFilm</th>
-											<th scope=\"col\">nome</th>
-											<th scope=\"col\">dataInizioProiezione</th>
-											<th scope=\"col\">dataFineProiezione</th>
-											<th scope=\"col\">durata</th>
+											<th scope=\"col\">Nome Film</th>
+											<th scope=\"col\">Data Acquisto</th>
+											<th scope=\"col\">Orario Acquisto</th>
+											<th scope=\"col\">Numero Di Posti Acquistati</th>
+											<th scope=\"col\">Durata</th>
 										</tr>
-									</thead> <tbody>    ";
+									</thead>
+									<tbody>";
 			if($result->num_rows > 0){
 				while($row = $result->fetch_assoc()) {
-					$msg .= "<tr> <td scope=\"row\">  " . $row['codiceFilm'] . "</td>
-											<td>" . $row['nome'] . "</td>
-											<td>" . $row['dataInizioProiezione'] . "</td>
-											<td>" . $row['dataFineProiezione'] . "</td>
+					$msg .= "<tr> <td scope=\"row\">  " . $row['nome'] . "</td>
+											<td>" . $row['dataAcquisto'] . "</td>
+											<td>" . $row['oraAcquisto'] . "</td>
+											<td>" . $row['num_posti_comprati'] . "</td>
 											<td>" . $row['durata'] . "</td>
 										</tr>";
 				}
 			}
-
+			$msg .= "	</tbody>";
 
 			//modifica account
 			$username=$_SESSION["usrLogin"];
@@ -198,7 +212,11 @@
 			}
 
 			$conn->close();
-			echo $msg;
+			echo "<div class=\"b_container\">
+							<div class=\"left_tpart\">
+								$msg
+							</div>
+						</div>";
 
 
 ?>
