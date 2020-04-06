@@ -172,7 +172,7 @@
 
 		}else{
 			die("error");
-			header("location:Prenotazione.php");
+			header("location:prenotazione.php");
 		}
 
 
