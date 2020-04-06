@@ -1,0 +1,51 @@
+create database theCinema;
+use theCinema;
+
+create table utente(
+	idUtente int auto_increment primary key,
+	username varchar(32) unique,
+	mail varchar(32) unique,
+	psw varchar(32),
+	dataNascita date,
+	punti int,
+	orario varchar(32),
+	privilegi varchar(32) default 'user'
+
+
+);
+create table sala(
+	id char(2) primary key,
+	numeroPosti int(3),
+	numeroPostiDisabili int(2),
+	qualitaSchermo varchar(32),
+	costoIntero decimal(4,2),
+	costoRidottoU6 decimal(4,2)
+);
+
+create table film(
+	codiceFilm int auto_increment primary key,
+	nome varchar(32),
+	dataProiezione date,
+	dataFineProiezione date,
+	durata time
+);
+create table proiezione(
+	idProiezione int auto_increment primary key,
+	idSala char(2),
+	codiceFilm int,
+	dataProiezione date,
+	orarioProiezione time,
+	foreign key (idSala) references sala(id),
+	foreign key (codiceFilm) references film(codiceFilm)
+
+);
+
+create table acquistaBiglietto(
+	codTransazione int auto_increment primary key,
+	oraAcquisto time,
+	dataAcquisto time,
+	idCliente int ,
+	idProiezione int,
+   	 foreign key(idCliente ) references utente(idUtente ),
+	foreign key(idProiezione) references proiezione(idProiezione)
+);
