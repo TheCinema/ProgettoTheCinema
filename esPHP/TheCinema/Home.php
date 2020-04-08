@@ -2,6 +2,9 @@
 
 
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="File-CSS/swiper.min.css" />
 
 	<script
 				src="https://kit.fontawesome.com/81c2c05f29.js"
@@ -146,20 +149,60 @@
 		}
 	}
 
-
-	.container2 {
-		width: 30%;
-		border:3px;
-		position: absolute;
-		top:50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
+	.logoTheCinema {
+		vertical-align: middle;
+		border: 0;
+		max-width: 100%;
+		width: 40px;
 	}
+
+
+	.title{
+		text-align: center;
+	  padding-top: 10%;
+	}
+
+/* scroll immagini al centro*/
+	.swiper-container {
+		width: 100%;
+		padding-top: 80px;
+		padding-bottom: 20px;
+	}
+	.swiper-slide {
+		background-position: center;
+		background-size: cover;
+		width: 350px;
+		height: 200px;
+		background: #000;
+	}
+	.swiper-slide .imgBx{
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.swiper-slide .imgBx img{
+		width: 100%;
+	}
+	.swiper-slide .details{
+		box-sizing: border-box;
+
+		padding: 20px;
+	}
+	.swiper-slide .details h3{
+		margin: 0;
+		padding: 0;
+		font-size: 20px;
+		text-align: center;
+		line-height: 20px;
+	}
+
+/*blocco in basso del sito*/
 	.footer, .push {
 		border-top: 1px solid #ccc;
 		background: black;
 		text-align: center;
-	  height: 100px; /* .push must be the same height as .footer */
+	  height: 100px;
 	}
 
 	</style>
@@ -169,100 +212,102 @@
 <body>
 	<body>
 		<?php
-		session_start();
+		//session_start();
 			//non sono admin
+
 			$_SESSION["dataDaMantenere"]=null;
 			$_SESSION["datiLoginNonPresenti"]=null;
 			$_SESSION["logFallito"]=null;
 			$_SESSION["regsterFall"]=null;
 			if(empty($_SESSION["log"])){
 					//home senza aver effettuato il login
+					$_SESSION["editMode"]=null;
 					$home = "
 
 					<nav class=\"navbar\">
-					 <h3 class=\"logo\">Immagine Logo</h3>
+					 <h3>LOGO</h3>
 					 <div class=\"icon\"><i class=\"fas fa-bars\"></i></div>
-					  <div class=\"links-wrapper active\">
-					    <div class=\"backdrop\"></div>
-					    <div class=\"close-btn\"><i class=\"fas fa-times\"></i></div>
-					    <ul class=\"links\">
+						<div class=\"links-wrapper active\">
+							<div class=\"backdrop\"></div>
+							<div class=\"close-btn\"><i class=\"fas fa-times\"></i></div>
+							<ul class=\"links\">
 								<li><a href=\"Home.php\"><b>HOME</b></a></li>
-								<li><a href=\"Prenotazione/prenotazione.php\"><b>PRENOTAZIONE</b></a></li>
+								<li><a href=\"Prenotazione/prent.php\"><b>PRENOTAZIONE</b></a></li>
 								<li><a href=\"Registrazione/loginregister/Login-Registra.php\"><b>REGISTRATI - ACCEDI</b></a></li>
-					    </ul>
-					  </div>
+							</ul>
+						</div>
 					</nav>
 
+					<h3 class=\"title\">FILM RECENTI</h3>
 
-					</p>
-					<div class=\"container2\">
-					<!--https://getbootstrap.com/docs/4.4/utilities/embed/ -->
-					<div id=\"carouselExampleIndicators\" class=\"carousel slide\" data-ride=\"carousel\">
-						<ol class=\"carousel-indicators\">
-							<li data-target=\"#carouselExa
-						mpleIndicators\" data-slide-to=\"0\" class=\"active\"></li>
-							<li data-target=\"#carouselExampleIndicators\" data-slide-to=\"1\"></li>
-							<li data-target=\"#carouselExampleIndicators\" data-slide-to=\"2\"></li>
-						</ol>
-						<div class=\"carousel-inner\">
-							<div class=\"carousel-item active\">
-								<img src=\"Immagini\Jack.jfif\" class=\"d-block w-100\" alt=\"...\" >
+
+					<div class=\"swiper-container\">
+			    	<div class=\"swiper-wrapper\">
+
+					<!-- 1 immagine -->
+			      <div class=\"swiper-slide\">
+			        <div class=\"imgBx\">
+			          <img src=\"Immagini/marvel.jpeg\" />
+			        </div>
+			        <div class=\"details\">
+			            <h3>Captain Marvel</h3>
+			        </div>
+						</div>
+					<!-- 2 immagine -->
+			      <div class=\"swiper-slide\" >
+							<div class=\"imgBx\">
+								<img src=\"\" />
 							</div>
-							<div class=\"carousel-item\">
-								<img src=\"Immagini\Ferencz.jfif\" class=\"d-block w-100\" alt=\"...\">
-							</div>
-							<div class=\"carousel-item\">
-								<img src=\"Immagini\Jack.jfif\" class=\"d-block w-100\" alt=\"...\">
+							<div class=\"details\">
+									<h3></h3>
 							</div>
 						</div>
-						<a class=\"carousel-control-prev\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"prev\">
-							<span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>
-							<span class=\"sr-only\">Previous</span>
-						</a>
-						<a class=\"carousel-control-next\" href=\"#carouselExampleIndicators\" role=\"button\" data-slide=\"next\">
-							<span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>
-							<span class=\"sr-only\">Next</span>
-						</a>
-					</div>
-					</div>
+					<!-- 3 immagine -->
+							<div class=\"swiper-slide\" >
+				        <div class=\"imgBx\">
+				          <img src=\"\" />
+				        </div>
+				        <div class=\"details\">
+				            <h3></h3>
+				        </div>
+							</div>
+					<!-- 4 immagine -->
+				      <div class=\"swiper-slide\" >
+								<div class=\"imgBx\">
+									<img src=\"\" />
+								</div>
+								<div class=\"details\">
+										<h3></h3>
+								</div>
+							</div>
 
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
-					<p>Ciao</p>
+			    	</div>
+   				<div class=\"swiper-pagination\"></div>
+			  </div>
+
+
+			    <script type=\"text/javascript\" src=\"swiper.min.js\"></script>
+
+			    <script>
+				   var swiper = new Swiper('.swiper-container', {
+			     effect: 'coverflow',
+			     grabCursor: true,
+			     centeredSlides: true,
+			     slidesPerView: 'auto',
+			     coverflowEffect: {
+				       rotate: 50,
+				       stretch: 0,
+				       depth: 100,
+				       modifier: 1,
+				       slideShadows : true,
+			     },
+			     pagination: {
+			       el: '.swiper-pagination',
+			     },
+			   });
+			 </script>
+
+
 
 					";
 
@@ -270,7 +315,7 @@
 
 
 			}else{
-
+					$_SESSION["editMode"]=null;
 				echo $_SESSION["privilegiAdmin"];
 				if(empty($_SESSION["privilegiAdmin"])){
 					//Utente con privilegi normali
@@ -384,10 +429,11 @@
 							<p>Ciao</p>
 							<p>Ciao</p>
  								";
+									$_SESSION["editMode"]=null;
 							echo $home;
 				}
 			}
-
+$_SESSION["editMode"]=null;
 			?>
 
 			 <div class="footer">
