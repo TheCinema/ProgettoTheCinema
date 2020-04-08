@@ -1,3 +1,6 @@
+<?php
+	session_start();
+ ?>
 <html>
 
 
@@ -212,7 +215,7 @@
 <body>
 	<body>
 		<?php
-		//session_start();
+
 			//non sono admin
 
 			$_SESSION["dataDaMantenere"]=null;
@@ -232,7 +235,7 @@
 							<div class=\"close-btn\"><i class=\"fas fa-times\"></i></div>
 							<ul class=\"links\">
 								<li><a href=\"Home.php\"><b>HOME</b></a></li>
-								<li><a href=\"Prenotazione/prent.php\"><b>PRENOTAZIONE</b></a></li>
+								<li><a href=\"Prenotazione/Prenotazione.php\"><b>PRENOTAZIONE</b></a></li>
 								<li><a href=\"Registrazione/loginregister/Login-Registra.php\"><b>REGISTRATI - ACCEDI</b></a></li>
 							</ul>
 						</div>
@@ -334,43 +337,75 @@
 									</ul>
 								</div>
 							</nav>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
+
+							<h3 class=\"title\">FILM RECENTI</h3>
+
+
+							<div class=\"swiper-container\">
+					    	<div class=\"swiper-wrapper\">
+
+							<!-- 1 immagine -->
+					      <div class=\"swiper-slide\">
+					        <div class=\"imgBx\">
+					          <img src=\"Immagini/marvel.jpeg\" />
+					        </div>
+					        <div class=\"details\">
+					            <h3>Captain Marvel</h3>
+					        </div>
+								</div>
+							<!-- 2 immagine -->
+					      <div class=\"swiper-slide\" >
+									<div class=\"imgBx\">
+										<img src=\"\" />
+									</div>
+									<div class=\"details\">
+											<h3></h3>
+									</div>
+								</div>
+							<!-- 3 immagine -->
+									<div class=\"swiper-slide\" >
+						        <div class=\"imgBx\">
+						          <img src=\"\" />
+						        </div>
+						        <div class=\"details\">
+						            <h3></h3>
+						        </div>
+									</div>
+							<!-- 4 immagine -->
+						      <div class=\"swiper-slide\" >
+										<div class=\"imgBx\">
+											<img src=\"\" />
+										</div>
+										<div class=\"details\">
+												<h3></h3>
+										</div>
+									</div>
+
+					    	</div>
+		   				<div class=\"swiper-pagination\"></div>
+					  </div>
+
+
+					    <script type=\"text/javascript\" src=\"swiper.min.js\"></script>
+
+					    <script>
+						   var swiper = new Swiper('.swiper-container', {
+					     effect: 'coverflow',
+					     grabCursor: true,
+					     centeredSlides: true,
+					     slidesPerView: 'auto',
+					     coverflowEffect: {
+						       rotate: 50,
+						       stretch: 0,
+						       depth: 100,
+						       modifier: 1,
+						       slideShadows : true,
+					     },
+					     pagination: {
+					       el: '.swiper-pagination',
+					     },
+					   });
+					 </script>
  							";
 							echo $home;
 
@@ -391,43 +426,75 @@
 									</ul>
 								</div>
 							</nav>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
-							<p>Ciao</p>
+							
+							<h3 class=\"title\">FILM RECENTI</h3>
+
+
+							<div class=\"swiper-container\">
+								<div class=\"swiper-wrapper\">
+
+							<!-- 1 immagine -->
+								<div class=\"swiper-slide\">
+									<div class=\"imgBx\">
+										<img src=\"Immagini/marvel.jpeg\" />
+									</div>
+									<div class=\"details\">
+											<h3>Captain Marvel</h3>
+									</div>
+								</div>
+							<!-- 2 immagine -->
+								<div class=\"swiper-slide\" >
+									<div class=\"imgBx\">
+										<img src=\"\" />
+									</div>
+									<div class=\"details\">
+											<h3></h3>
+									</div>
+								</div>
+							<!-- 3 immagine -->
+									<div class=\"swiper-slide\" >
+										<div class=\"imgBx\">
+											<img src=\"\" />
+										</div>
+										<div class=\"details\">
+												<h3></h3>
+										</div>
+									</div>
+							<!-- 4 immagine -->
+									<div class=\"swiper-slide\" >
+										<div class=\"imgBx\">
+											<img src=\"\" />
+										</div>
+										<div class=\"details\">
+												<h3></h3>
+										</div>
+									</div>
+
+								</div>
+							<div class=\"swiper-pagination\"></div>
+						</div>
+
+
+							<script type=\"text/javascript\" src=\"swiper.min.js\"></script>
+
+							<script>
+							 var swiper = new Swiper('.swiper-container', {
+							 effect: 'coverflow',
+							 grabCursor: true,
+							 centeredSlides: true,
+							 slidesPerView: 'auto',
+							 coverflowEffect: {
+									 rotate: 50,
+									 stretch: 0,
+									 depth: 100,
+									 modifier: 1,
+									 slideShadows : true,
+							 },
+							 pagination: {
+								 el: '.swiper-pagination',
+							 },
+						 });
+					 </script>
  								";
 									$_SESSION["editMode"]=null;
 							echo $home;

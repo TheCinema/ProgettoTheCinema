@@ -3,15 +3,7 @@
     <?php
     session_start();
     include "connessione.php";
-    $ip=$_SERVER['SERVER_NAME'];  //server per vedere sei sei localhost o hai un ip
-    $porta=$_SERVER['SERVER_PORT'];   //porta del serve, perchè c'è chi ha 80, chi 8080 etc...
-        if(isset($_SESSION["usrLogin"])){
-          //vuoldire che é stato effettuato il login precedentemente
-        }else{
-          $_SESSION["loginPerAcquisto"]="yes";
-          header("Location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/Registrazione/loginregister/Login-Registra.php");
-          die("");
-        }
+    
 
 
     ///ricevo gli id
