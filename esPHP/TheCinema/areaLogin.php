@@ -67,6 +67,9 @@
 			if($_SERVER["REQUEST_METHOD"]=="POST"){
 				   			//vedere form in basso
 				if(isset($_POST["logout"])) {
+					$_SESSION["usrLogin"]=null;
+					$_SESSION["mailLogin"]=null;
+					$_SESSION["dataLogin"]=null;
 					header("location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/Registrazione/loginregister/logout.php");
 					die("");
 				}
