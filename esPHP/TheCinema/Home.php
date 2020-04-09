@@ -249,7 +249,7 @@
 						";
 						/////////prendo le foto dal database //////////////////////////
 						$arrFoto=Array();
-						$sql = "SELECT film.foto from film";
+						$sql = "SELECT film.foto,film.nome from film";
 						$records=$conn->query($sql);
 						if ( $records == TRUE) {
 								//echo "<br>Query eseguita!";
@@ -265,17 +265,18 @@
 								while($tupla=$records-> fetch_assoc()){
 									//echo $tupla["id"];
 									$foto=$tupla["foto"];
-									$arrFoto[]=$foto;
+									$nome=$tupla["nome"];
+									$arrFoto+=Array($nome=>$foto);
 								}
 							}
 
-							for($i=0;$i<count($arrFoto);$i++){
+							foreach($arrFoto as $nome=>$foto){
 								$home.="<div class=\"swiper-slide\">
 					 			        <div class=\"imgBx\">
-					 			          <img src=\"Immagini/marvel.jpeg\" />
+					 			          <img src=\"$foto\" />
 					 			        </div>
 					 			        <div class=\"details\">
-					 			            <h3>Captain Marvel</h3>
+					 			            <h3>$nome</h3>
 					 			        </div>
 					 						</div>";
 
@@ -345,7 +346,7 @@
 
 								/////////prendo le foto dal database //////////////////////////
 								$arrFoto=Array();
-								$sql = "SELECT film.foto from film";
+								$sql = "SELECT film.foto,film.nome from film";
 								$records=$conn->query($sql);
 								if ( $records == TRUE) {
 										//echo "<br>Query eseguita!";
@@ -361,22 +362,22 @@
 										while($tupla=$records-> fetch_assoc()){
 											//echo $tupla["id"];
 											$foto=$tupla["foto"];
-											$arrFoto[]=$foto;
+											$nome=$tupla["nome"];
+											$arrFoto+=Array($nome=>$foto);
 										}
 									}
 
-									for($i=0;$i<count($arrFoto);$i++){
+									foreach($arrFoto as $nome=>$foto){
 										$home.="<div class=\"swiper-slide\">
 							 			        <div class=\"imgBx\">
-							 			          <img src=\"Immagini/marvel.jpeg\" />
+							 			          <img src=\"$foto\" />
 							 			        </div>
 							 			        <div class=\"details\">
-							 			            <h3>Captain Marvel</h3>
+							 			            <h3>$nome</h3>
 							 			        </div>
 							 						</div>";
 
 									}
-
 									$home.="
 
 								    	</div>
@@ -437,7 +438,7 @@
 
 								/////////prendo le foto dal database //////////////////////////
 								$arrFoto=Array();
-								$sql = "SELECT film.foto from film";
+								$sql = "SELECT film.foto,film.nome from film";
 								$records=$conn->query($sql);
 								if ( $records == TRUE) {
 										//echo "<br>Query eseguita!";
@@ -453,22 +454,22 @@
 										while($tupla=$records-> fetch_assoc()){
 											//echo $tupla["id"];
 											$foto=$tupla["foto"];
-											$arrFoto[]=$foto;
+											$nome=$tupla["nome"];
+											$arrFoto+=Array($nome=>$foto);
 										}
 									}
 
-									for($i=0;$i<count($arrFoto);$i++){
+									foreach($arrFoto as $nome=>$foto){
 										$home.="<div class=\"swiper-slide\">
-							 			        <div class=\"imgBx\">
-							 			          <img src=\"Immagini/marvel.jpeg\" />
-							 			        </div>
-							 			        <div class=\"details\">
-							 			            <h3>Captain Marvel</h3>
-							 			        </div>
-							 						</div>";
+														<div class=\"imgBx\">
+															<img src=\"$foto\" />
+														</div>
+														<div class=\"details\">
+																<h3>$nome</h3>
+														</div>
+													</div>";
 
 									}
-
 									$home.="
 
 								    	</div>
