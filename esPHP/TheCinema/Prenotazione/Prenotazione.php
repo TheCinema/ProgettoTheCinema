@@ -171,7 +171,7 @@
 			}
 
 		}
-	
+
 		//$_SESSION["data"]=null;
 					//calendario per la scelta del giorno
 				//	$_SESSION["dataDaMantenere"]=null;
