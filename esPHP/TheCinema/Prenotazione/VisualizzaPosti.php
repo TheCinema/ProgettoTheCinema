@@ -149,7 +149,6 @@
                         if($records->num_rows ==0){
                               //	echo "la query non ha prodotto risultato";
                               //die("non si sono posti");
-
                               die("Spiacente, per questo spettacolo non è rimasto nessun posto libero.<a href=\"Prenotazione.php\">  Scegli un altro film</a>");
                         }else{
                           $_SESSION["nessunPostoDisponibile"]=null;
