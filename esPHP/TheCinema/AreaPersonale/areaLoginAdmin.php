@@ -58,10 +58,18 @@
 
 				<?php
 					session_start();
-					$ip=$_SERVER['SERVER_NAME'];  //server per vedere sei sei localhost o hai un ip
-					$porta=$_SERVER['SERVER_PORT'];   //porta del serve, perchè c'è chi ha 80, chi 8080 etc...
+					$ip = $_SERVER['SERVER_NAME'];  //server per vedere sei sei localhost o hai un ip
+					$porta = $_SERVER['SERVER_PORT'];   //porta del serve, perchè c'è chi ha 80, chi 8080 etc...
+					//verifico se è stato fatto il login
+					$username=$_SESSION["usrLogin"];
+					if(isset($username)){
+						//ok rimane
+					}else{
+						  header("location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/Home.php");  //viene rimandato alla Home
+							die("");
+					}
 					//includo file per la connesione al database
-					include "Registrazione/loginregister/connessione.php";
+					include "connessione.php";
 					//quando viene cliccato il pulsante
 					if($_SERVER["REQUEST_METHOD"]=="POST") {
 						if(isset($_POST["svuotaDatabase"])) {
@@ -81,12 +89,11 @@
 
 						if(isset($_POST["logout"])){
 							//ripristino tutte le variabili di sessione
-							 $_SESSION["log"]=null;
-							 	$_SESSION["regsterFall"] = null;
-									$_SESSION["etaInsuf"]=null;
-									$_SESSION["passDiverse"]=null;
-									$_SESSION["emailDiverse"]=null;
-								header("Location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/Home.php");
+							$_SESSION["usrLogin"]=null;
+							$_SESSION["mailLogin"]=null;
+							$_SESSION["dataLogin"]=null;
+							header("location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/Registrazione/loginregister/logout.php");
+							die("");
 						}
 
 					}else{

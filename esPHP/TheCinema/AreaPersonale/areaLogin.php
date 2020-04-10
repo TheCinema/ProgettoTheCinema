@@ -63,7 +63,14 @@
 			$flagEnd= false;
 			$ip = $_SERVER['SERVER_NAME'];  //server per vedere sei sei localhost o hai un ip
 			$porta = $_SERVER['SERVER_PORT'];   //porta del serve, perchè c'è chi ha 80, chi 8080 etc...
-
+			//verifico se è stato fatto il login
+			$username=$_SESSION["usrLogin"];
+			if(isset($username)){
+				//ok rimane
+			}else{
+				  header("location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/Home.php");  //viene rimandato alla Home
+					die("");
+			}
 			if($_SERVER["REQUEST_METHOD"]=="POST"){
 				   			//vedere form in basso
 				if(isset($_POST["logout"])) {
@@ -74,7 +81,7 @@
 					die("");
 				}
 				if(isset($_POST["elimina"])) {
-					die("");
+					die("eliminiamo");
 				}
 				if(isset($_POST["modifica"])) {
 						header("location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/modificaAccount.php");
@@ -82,7 +89,7 @@
 			}
 								//Connessione con db
 			//includo file per la connesione al database
-			include "Registrazione/loginregister/connessione.php";
+			include "connessione.php";
 			//Query estrapola tutti i film che ho guardato fino a oggi
 			//creo la query
 			$u = $_SESSION["user"];
@@ -125,17 +132,17 @@
 			$dataNascita=$_SESSION["dataLogin"];
 
 
-			if(!isset($_SESSION["editMode"])){
+			if(!isset($_SESSION["editMode"])){ //non voglio modificare
 
 				$msg.="
-				<input type=\"text\" name=\"usr\" value=\"$username\" readonly><a href=\"http://$ip:$porta/esPHP/TheCinema/areaLogin.php?campo=usr\" > <img  width=\"40px\" height=\"40px\" src=\"Immagini/pen.png\" /></a><br><br>
-				<input type=\"text\" name=\"mail\" value=\"$mail\" readonly><a href=\"http://$ip:$porta/esPHP/TheCinema/areaLogin.php?campo=mail\" > <img  width=\"40px\" height=\"40px\" src=\"Immagini/pen.png\" /></a><br><br>
-				<input type=\"text\" name=\"data\" value=\"$dataNascita\" readonly><a href=\"http://$ip:$porta/esPHP/TheCinema/areaLogin.php?campo=dataNascita\" > <img  width=\"40px\" height=\"40px\" src=\"Immagini/pen.png\" /></a><br><br>
+
+				<input type=\"text\" name=\"usr\" value=\"$username\" readonly><a href=\"http://$ip:$porta/esPHP/TheCinema/areaLogin.php?campo=usr\" > <img  width=\"40px\" height=\"40px\" src=\" http://" .$ip .":" .$porta ."/esPHP/TheCinema/Immagini/pen.png\" /></a><br><br>
+				<input type=\"text\" name=\"mail\" value=\"$mail\" readonly><a href=\"http://$ip:$porta/esPHP/TheCinema/areaLogin.php?campo=mail\" > <img  width=\"40px\" height=\"40px\" src=\"http://" .$ip .":" .$porta ."/esPHP/TheCinema/Immagini/pen.png\" /></a><br><br>
+				<input type=\"text\" name=\"data\" value=\"$dataNascita\" readonly><a href=\"http://$ip:$porta/esPHP/TheCinema/areaLogin.php?campo=dataNascita\" > <img  width=\"40px\" height=\"40px\" src=\"http://" .$ip .":" .$porta ."/esPHP/TheCinema/Immagini/pen.png\" /></a><br><br>
 							";
-				$_SESSION["editMode"]=1;
+
 
 			}else{//vogliamo modificare
-
 				if(isset($_GET["campo"])){
 					$campoDaModificare=$_GET["campo"];
 
@@ -226,8 +233,29 @@
 <div>
 	<form action="areaLogin.php" method="post">
 		<input type="submit" name="logout" class="button1"  value="Logout"></input>
-		<input type="submit" name="elimina" class="button2" id="2" value="Elimina l'account"></input>
 	</form>
+	<button type="submit" onclick="myFunction()" name="elimina" class="button2" id="2" >Elimina l'account</button>
 </div>
+<p id="eliminaAccount"></p>
+
+	<?php
+		//uso la variabile $username che prende l'username da una session
+		$alertBox="
+				<script>
+							function myFunction() {
+								  var txt;
+								  var person = prompt(\"Scrivi il tuo username per cancellare definitivamente il tuo account '$username' : \");
+								  if (person == null || person == \"\" ) {
+											txt=\"\";
+								  }if(person==\"$username\") {
+								    txt =\"\";
+										location.href = 'eliminaAccount.php';								  }
+								  document.getElementById(\"eliminaAccount\").innerHTML = txt;
+							}
+
+
+	 			</script>";
+				echo $alertBox;
+	?>
 </body>
 </html>

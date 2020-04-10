@@ -1,4 +1,10 @@
 <html>
+  <head>
+      <title>The Cinema </title>
+    <style>
+
+    </style>
+  </head>
   <body>
     <?php
     session_start();

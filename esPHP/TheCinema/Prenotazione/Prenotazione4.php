@@ -1,110 +1,111 @@
 <html>
-<head>
-	<style>
-		body {
-			margin:auto;
-			background: rgb(253,187,45);
-			background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(34,193,195,1) 100%);
-			font-family: 'Roboto', sans-serif;
-			font-weight: 800;
-			position: relative;
-		}
-		form{
-		position: absolute;
-		top: 60%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		}
-		p {
-		border-style: inset;
-		text-align:center;
-		position: absolute;
-		top: 20%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		 font-size: 34px;
-		padding: 30px;
-		}
+		<head>
+				<title>The Cinema </title>
+			<style>
+				body {
+					margin:auto;
+					background: rgb(253,187,45);
+					background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(34,193,195,1) 100%);
+					font-family: 'Roboto', sans-serif;
+					font-weight: 800;
+					position: relative;
+				}
+				form{
+				position: absolute;
+				top: 60%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				}
+				p {
+				border-style: inset;
+				text-align:center;
+				position: absolute;
+				top: 20%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				 font-size: 34px;
+				padding: 30px;
+				}
 
-	.button2 {
-		border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-		background-color: #008CBA; /* Blue */
-	position: absolute;
-		top: 100%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
+			.button2 {
+				border: none;
+		  color: white;
+		  padding: 15px 32px;
+		  text-align: center;
+		  text-decoration: none;
+		  display: inline-block;
+		  font-size: 16px;
+				background-color: #008CBA; /* Blue */
+			position: absolute;
+				top: 100%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
 
-			.container {
-									font-family: 'Roboto', sans-serif;
-								  width: 1300px;
-								  margin: 30px ;
-						  }
-  .progressbar {font-family: 'Roboto', sans-serif;
-      counter-reset: step;
+					.container {
+											font-family: 'Roboto', sans-serif;
+										  width: 1300px;
+										  margin: 30px ;
+								  }
+		  .progressbar {font-family: 'Roboto', sans-serif;
+		      counter-reset: step;
 
-  }
-  .progressbar li {
-	  font-family: 'Roboto', sans-serif;
-      list-style-type: none;
-      width: 25%;
-      float: left;
+		  }
+		  .progressbar li {
+			  font-family: 'Roboto', sans-serif;
+		      list-style-type: none;
+		      width: 25%;
+		      float: left;
 
-      font-size: 12px;
-      position: relative;
-      text-align: center;
-      text-transform: uppercase;
-      color: #7d7d7d;
-  }
-  .progressbar li:before {
-	  font-family: 'Roboto', sans-serif;
-      width: 30px;
-      height: 30px;
-      content: counter(step);
-      counter-increment: step;
-      line-height: 30px;
-      border: 2px solid #7d7d7d;
-      display: block;
-      text-align: center;
-      margin: 0 auto 10px auto;
-      border-radius: 50%;
-      background-color: white;
-  }
-  .progressbar li:after {
-	  font-family: 'Roboto', sans-serif;
-      width: 100%;
-      height: 2px;
-      content: '';
-      position: absolute;
-      background-color: #7d7d7d;
-      top: 15px;
-      left: -50%;
-      z-index: -1;
-  }
-  .progressbar li:first-child:after {
-	  font-family: 'Roboto', sans-serif;
-      content: none;
-  }
-  .progressbar li.active {
-	  font-family: 'Roboto', sans-serif;
-      color: black;
-  }
-  .progressbar li.active:before {
-	  font-family: 'Roboto', sans-serif;
-      border-color: black;
-  }
-  .progressbar li.active + li:after {
-	  font-family: 'Roboto', sans-serif;
-      background-color: black;
-  }
-	</style>
-</head>
+		      font-size: 12px;
+		      position: relative;
+		      text-align: center;
+		      text-transform: uppercase;
+		      color: #7d7d7d;
+		  }
+		  .progressbar li:before {
+			  font-family: 'Roboto', sans-serif;
+		      width: 30px;
+		      height: 30px;
+		      content: counter(step);
+		      counter-increment: step;
+		      line-height: 30px;
+		      border: 2px solid #7d7d7d;
+		      display: block;
+		      text-align: center;
+		      margin: 0 auto 10px auto;
+		      border-radius: 50%;
+		      background-color: white;
+		  }
+		  .progressbar li:after {
+			  font-family: 'Roboto', sans-serif;
+		      width: 100%;
+		      height: 2px;
+		      content: '';
+		      position: absolute;
+		      background-color: #7d7d7d;
+		      top: 15px;
+		      left: -50%;
+		      z-index: -1;
+		  }
+		  .progressbar li:first-child:after {
+			  font-family: 'Roboto', sans-serif;
+		      content: none;
+		  }
+		  .progressbar li.active {
+			  font-family: 'Roboto', sans-serif;
+		      color: black;
+		  }
+		  .progressbar li.active:before {
+			  font-family: 'Roboto', sans-serif;
+		      border-color: black;
+		  }
+		  .progressbar li.active + li:after {
+			  font-family: 'Roboto', sans-serif;
+		      background-color: black;
+		  }
+			</style>
+		</head>
 
 <body>
   <div class="container">
@@ -116,6 +117,16 @@
   		</ul>
 	<?php
 		session_start();
+		$ip = $_SERVER['SERVER_NAME'];  //server per vedere sei sei localhost o hai un ip
+		$porta = $_SERVER['SERVER_PORT'];   //porta del serve, perchè c'è chi ha 80, chi 8080 etc...
+		//verifico se è stato fatto il login
+		$username=$_SESSION["usrLogin"];
+		if(isset($username)){
+			//ok rimane
+		}else{
+				header("location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/Home.php");  //viene rimandato alla Home
+				die("");
+		}
 					$arrPosti=Array();
 					$costo=0;
 						if(isset($_POST["numeroPosti"])){
