@@ -2,6 +2,12 @@
 <head>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<style>
+								a:hover{
+							border:2px solid red;
+							}
+							a{
+						border:2px solid black;
+						}
 							body {
 								margin:auto;
 								background: rgb(253,187,45);
@@ -165,22 +171,22 @@
 			}
 
 		}
+	
 		//$_SESSION["data"]=null;
 					//calendario per la scelta del giorno
 				//	$_SESSION["dataDaMantenere"]=null;
 					if(isset(	$_SESSION["dataDaMantenere"])){
 
 								$dataSelezionata =$_SESSION["dataDaMantenere"];
-									$ieri=date('Y-m-d', strtotime("-1 days"));
+										$dataAttuale = date("Y-m-d");
 											$msg=" <br><form action=\"Prenotazione.php\" method=\"POST\" ><input type=\"date\"
-							name=\"data\" value=\"$dataSelezionata\"  min=\"$ieri\" ></input>
+							name=\"data\" value=\"$dataSelezionata\"  min=\"$dataAttuale\" ></input>
 							<input type=\"submit\" value=\"invia\"></input>"; //1.invio il dato
 						//	$_SESSION["data"]=null;
 					}else{
 								$dataAttuale = date("Y-m-d");
-									$ieri=date('Y-m-d', strtotime("-1 days"));
 						$msg=" <br><form action=\"Prenotazione.php\" method=\"POST\" ><input type=\"date\"
-							name=\"data\" value=\"$dataAttuale\"  min=\"$ieri\" ></input>
+							name=\"data\" value=\"$dataAttuale\"  min=\"$dataAttuale\" ></input>
 							<input type=\"submit\" value=\"invia\"></input>";
 				}
 
@@ -189,7 +195,7 @@
 			echo $msg;
 
 
-		
+
 
 								///////////////trovo i film disponibili per la data selezionata//////////////////////
 								 $film=Array();
@@ -243,7 +249,8 @@
 														                   while($tupla=$records->fetch_assoc()){
 																								 $idProiezione=$tupla["idProiezione"];
 														                     $ora=$tupla["orarioProiezione"];
-																									$msg.= "<td><a href=\"Prenotazione2.php?idProiezione=$idProiezione\"> <img width=\"50px\" height=\"50px\"src=\"$immagineOra\"></img></a><br></td>";
+																								 //<img width=\"50px\" height=\"50px\"src=\"$immagineOra\"></img>
+																									$msg.= "<td><a href=\"Prenotazione2.php?idProiezione=$idProiezione\">$ora</a><br></td>";
 																							//	 $msg.= "<td><button class=\"button3\" onclick=\"window.location.href = \"Prenotazione2.php?id=$idProiezione\";\"  ></button><br></td> ";
 
 
