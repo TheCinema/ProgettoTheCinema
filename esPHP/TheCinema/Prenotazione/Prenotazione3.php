@@ -192,7 +192,7 @@
 																	//	echo "<br> Costo ricotto $costoRidottoU6";
 																}
 											 }
-											 $msg="<form action=\"Prenotazione4.php\" method=\"POST\">";
+											 $msg="<form action=\"prenotazione4.php\" method=\"POST\">";
 											 $numPosti=1;
 											 for($i=0;$i<count($numero);$i++){
 												// echo "<br><a>[$id[$i]] Posto lettera  $lettera[$i], numero  $numero[$i]</a> ";

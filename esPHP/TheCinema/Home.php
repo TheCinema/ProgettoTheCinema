@@ -1,3 +1,6 @@
+<?php
+	session_start();
+ ?>
 <html>
 
 
@@ -212,7 +215,11 @@
 <body>
 	<body>
 		<?php
+<<<<<<< HEAD
 		session_start();
+=======
+		include "connessione.php";
+>>>>>>> 84ad7ecf761c72dc616ef3b152ebe73a4763656c
 			//non sono admin
 
 			$_SESSION["dataDaMantenere"]=null;
@@ -232,7 +239,7 @@
 							<div class=\"close-btn\"><i class=\"fas fa-times\"></i></div>
 							<ul class=\"links\">
 								<li><a href=\"Home.php\"><b>HOME</b></a></li>
-								<li><a href=\"Prenotazione/prent.php\"><b>PRENOTAZIONE</b></a></li>
+								<li><a href=\"Prenotazione/Prenotazione.php\"><b>PRENOTAZIONE</b></a></li>
 								<li><a href=\"Registrazione/loginregister/Login-Registra.php\"><b>REGISTRATI - ACCEDI</b></a></li>
 							</ul>
 						</div>
@@ -243,69 +250,69 @@
 
 					<div class=\"swiper-container\">
 			    	<div class=\"swiper-wrapper\">
+						";
+						/////////prendo le foto dal database //////////////////////////
+						$arrFoto=Array();
+						$sql = "SELECT film.foto,film.nome from film";
+						$records=$conn->query($sql);
+						if ( $records == TRUE) {
+								//echo "<br>Query eseguita!";
+						}else {
+							die("Errore nella query: " . $conn->error);
+						}
+						//gestisco gli eventuali dati estratti dalla query
+						if($records->num_rows == 0){
+								///dati non corretti
+									$_SESSION["logFallito"]="yes";
+								header('Location: Login-Registra.php');
+						}else{
+								while($tupla=$records-> fetch_assoc()){
+									//echo $tupla["id"];
+									$foto=$tupla["foto"];
+									$nome=$tupla["nome"];
+									$arrFoto+=Array($nome=>$foto);
+								}
+							}
 
-					<!-- 1 immagine -->
-			      <div class=\"swiper-slide\">
-			        <div class=\"imgBx\">
-			          <img src=\"Immagini/marvel.jpeg\" />
-			        </div>
-			        <div class=\"details\">
-			            <h3>Captain Marvel</h3>
-			        </div>
-						</div>
-					<!-- 2 immagine -->
-			      <div class=\"swiper-slide\" >
-							<div class=\"imgBx\">
-								<img src=\"\" />
-							</div>
-							<div class=\"details\">
-									<h3></h3>
-							</div>
-						</div>
-					<!-- 3 immagine -->
-							<div class=\"swiper-slide\" >
-				        <div class=\"imgBx\">
-				          <img src=\"\" />
-				        </div>
-				        <div class=\"details\">
-				            <h3></h3>
-				        </div>
-							</div>
-					<!-- 4 immagine -->
-				      <div class=\"swiper-slide\" >
-								<div class=\"imgBx\">
-									<img src=\"\" />
-								</div>
-								<div class=\"details\">
-										<h3></h3>
-								</div>
-							</div>
+							foreach($arrFoto as $nome=>$foto){
+								$home.="<div class=\"swiper-slide\">
+					 			        <div class=\"imgBx\">
+					 			          <img src=\"$foto\" />
+					 			        </div>
+					 			        <div class=\"details\">
+					 			            <h3>$nome</h3>
+					 			        </div>
+					 						</div>";
 
-			    	</div>
-   				<div class=\"swiper-pagination\"></div>
-			  </div>
+							}
+
+							$home.="
+
+						    	</div>
+			   				<div class=\"swiper-pagination\"></div>
+						  </div>
 
 
-			    <script type=\"text/javascript\" src=\"swiper.min.js\"></script>
+						    <script type=\"text/javascript\" src=\"swiper.min.js\"></script>
 
-			    <script>
-				   var swiper = new Swiper('.swiper-container', {
-			     effect: 'coverflow',
-			     grabCursor: true,
-			     centeredSlides: true,
-			     slidesPerView: 'auto',
-			     coverflowEffect: {
-				       rotate: 50,
-				       stretch: 0,
-				       depth: 100,
-				       modifier: 1,
-				       slideShadows : true,
-			     },
-			     pagination: {
-			       el: '.swiper-pagination',
-			     },
-			   });
-			 </script>
+						    <script>
+							   var swiper = new Swiper('.swiper-container', {
+						     effect: 'coverflow',
+						     grabCursor: true,
+						     centeredSlides: true,
+						     slidesPerView: 'auto',
+						     coverflowEffect: {
+							       rotate: 50,
+							       stretch: 0,
+							       depth: 100,
+							       modifier: 1,
+							       slideShadows : true,
+						     },
+						     pagination: {
+						       el: '.swiper-pagination',
+						     },
+						   });
+						 </script>
 
 
 
@@ -334,10 +341,15 @@
 									</ul>
 								</div>
 							</nav>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 84ad7ecf761c72dc616ef3b152ebe73a4763656c
 							<h3 class=\"title\">FILM RECENTI</h3>
 
 
 							<div class=\"swiper-container\">
+<<<<<<< HEAD
 								<div class=\"swiper-wrapper\">
 
 							<!-- 1 immagine -->
@@ -404,6 +416,76 @@
 					 </script>
 
  							";
+=======
+					    	<div class=\"swiper-wrapper\">";
+
+								/////////prendo le foto dal database //////////////////////////
+								$arrFoto=Array();
+								$sql = "SELECT film.foto,film.nome from film";
+								$records=$conn->query($sql);
+								if ( $records == TRUE) {
+										//echo "<br>Query eseguita!";
+								}else {
+									die("Errore nella query: " . $conn->error);
+								}
+								//gestisco gli eventuali dati estratti dalla query
+								if($records->num_rows == 0){
+										///dati non corretti
+											$_SESSION["logFallito"]="yes";
+										header('Location: Login-Registra.php');
+								}else{
+										while($tupla=$records-> fetch_assoc()){
+											//echo $tupla["id"];
+											$foto=$tupla["foto"];
+											$nome=$tupla["nome"];
+											$arrFoto+=Array($nome=>$foto);
+										}
+									}
+
+									foreach($arrFoto as $nome=>$foto){
+										$home.="<div class=\"swiper-slide\">
+							 			        <div class=\"imgBx\">
+							 			          <img src=\"$foto\" />
+							 			        </div>
+							 			        <div class=\"details\">
+							 			            <h3>$nome</h3>
+							 			        </div>
+							 						</div>";
+
+									}
+									$home.="
+
+								    	</div>
+					   				<div class=\"swiper-pagination\"></div>
+								  </div>
+
+
+								    <script type=\"text/javascript\" src=\"swiper.min.js\"></script>
+
+								    <script>
+									   var swiper = new Swiper('.swiper-container', {
+								     effect: 'coverflow',
+								     grabCursor: true,
+								     centeredSlides: true,
+								     slidesPerView: 'auto',
+								     coverflowEffect: {
+									       rotate: 50,
+									       stretch: 0,
+									       depth: 100,
+									       modifier: 1,
+									       slideShadows : true,
+								     },
+								     pagination: {
+								       el: '.swiper-pagination',
+								     },
+								   });
+								 </script>
+
+
+
+							";
+
+>>>>>>> 84ad7ecf761c72dc616ef3b152ebe73a4763656c
 							echo $home;
 
 				}else{
@@ -423,10 +505,15 @@
 									</ul>
 								</div>
 							</nav>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 84ad7ecf761c72dc616ef3b152ebe73a4763656c
 							<h3 class=\"title\">FILM RECENTI</h3>
 
 
 							<div class=\"swiper-container\">
+<<<<<<< HEAD
 					    	<div class=\"swiper-wrapper\">
 
 							<!-- 1 immagine -->
@@ -493,6 +580,75 @@
 					 </script>
 
  								";
+=======
+								<div class=\"swiper-wrapper\">";
+
+								/////////prendo le foto dal database //////////////////////////
+								$arrFoto=Array();
+								$sql = "SELECT film.foto,film.nome from film";
+								$records=$conn->query($sql);
+								if ( $records == TRUE) {
+										//echo "<br>Query eseguita!";
+								}else {
+									die("Errore nella query: " . $conn->error);
+								}
+								//gestisco gli eventuali dati estratti dalla query
+								if($records->num_rows == 0){
+										///dati non corretti
+											$_SESSION["logFallito"]="yes";
+										header('Location: Login-Registra.php');
+								}else{
+										while($tupla=$records-> fetch_assoc()){
+											//echo $tupla["id"];
+											$foto=$tupla["foto"];
+											$nome=$tupla["nome"];
+											$arrFoto+=Array($nome=>$foto);
+										}
+									}
+
+									foreach($arrFoto as $nome=>$foto){
+										$home.="<div class=\"swiper-slide\">
+														<div class=\"imgBx\">
+															<img src=\"$foto\" />
+														</div>
+														<div class=\"details\">
+																<h3>$nome</h3>
+														</div>
+													</div>";
+
+									}
+									$home.="
+
+								    	</div>
+					   				<div class=\"swiper-pagination\"></div>
+								  </div>
+
+
+								    <script type=\"text/javascript\" src=\"swiper.min.js\"></script>
+
+								    <script>
+									   var swiper = new Swiper('.swiper-container', {
+								     effect: 'coverflow',
+								     grabCursor: true,
+								     centeredSlides: true,
+								     slidesPerView: 'auto',
+								     coverflowEffect: {
+									       rotate: 50,
+									       stretch: 0,
+									       depth: 100,
+									       modifier: 1,
+									       slideShadows : true,
+								     },
+								     pagination: {
+								       el: '.swiper-pagination',
+								     },
+								   });
+								 </script>
+
+
+
+							";
+>>>>>>> 84ad7ecf761c72dc616ef3b152ebe73a4763656c
 									$_SESSION["editMode"]=null;
 							echo $home;
 				}

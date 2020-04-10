@@ -90,8 +90,13 @@
 													}
 													$_SESSION["regsterFall"]=null;
 													$_SESSION["etaInsuf"]=null;
+													if(isset($_SESSION["loginPerAcquisto"])){
+														header("Location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/home.php"); //reindirizza all'acquisto del biglietto
+														$_SESSION["loginPerAcquisto"]=null;
+													}else{
+															header("Location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/Home.php"); //reindirizza alla home
+													}
 
-												header("Location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/Home.php");
 
 										}
 
