@@ -21,7 +21,7 @@
   $ip=$_SERVER['SERVER_NAME'];
   $porta=$_SERVER['SERVER_PORT'];
 
-  include "Registrazione/loginregister/connessione.php";
+  include "connessione.php";
 
   if(isset($_SESSION["modificoUsr"])){
 
@@ -48,7 +48,9 @@
       if ($conn->query($sql) === TRUE) {
         $_SESSION["modificaAvvenuta"]=1;
         $_SESSION["usrLogin"]=$newUsr;
+        $_SESSION["modificoData"]=null;
         $_SESSION["modificoUsr"]=null;
+        $_SESSION["modificoMail"]=null;
         header('Location: areaLogin.php');
       }else {
         $_SESSION["erroreModifica"]=1;
@@ -96,6 +98,8 @@
             $sql="update utente set mail=\"$newMail\" where username=\"$usr\"";
             if ($conn->query($sql) === TRUE) {
               $_SESSION["modificaAvvenuta"]=1;;
+              $_SESSION["modificoData"]=null;
+              $_SESSION["modificoUsr"]=null;
               $_SESSION["modificoMail"]=null;
               $_SESSION["mailLogin"]=$newMail;
               $_SESSION["newMail"]=$newMail;//variabile di sessione che avrò la nuova mail
@@ -124,6 +128,8 @@
             $_SESSION["modificaAvvenuta"]=1;
             $_SESSION["newData"]=$newData;//variabile di sessione che avrò la nuova mail
             $_SESSION["modificoData"]=null;
+            $_SESSION["modificoUsr"]=null;
+            $_SESSION["modificoMail"]=null;
             $_SESSION["dataLogin"]=$newData;
             header('Location: areaLogin.php');
           }
