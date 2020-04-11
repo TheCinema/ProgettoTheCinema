@@ -1,3 +1,7 @@
+<?php
+	session_start();
+ ?>
+
 <html>
 
 
@@ -74,7 +78,7 @@
       min-height: 90px;
 			position: fixed;
 			width: 100%;
-			margin-left: 70%;
+			margin-left: 60%;
     }
 
     .navigation-menu a{
@@ -129,7 +133,7 @@
     }
 
 
-    @media screen and (max-width:700px) {
+    @media screen and (max-width:1500px) {
       .menu-toggle-btn{
         display: block !important;
       }
@@ -231,7 +235,6 @@
 
 
 		<?php
-		//session_start();
 			//non sono admin
 
 			$_SESSION["dataDaMantenere"]=null;
@@ -354,7 +357,7 @@
 									<nav class=\"navigation-menu\">
 										<a href=\"Home.php\"><i class=\"fas fa-home home\"></i> HOME</a>
 										<a href=\"Prenotazione/Prenotazione.php\"><i class=\"fas fa-align-left about\"></i>PRENOTA BIGLIETTO</a>
-										<a href=\"Registrazione/loginregister/Login-Registra.php\"><i class=\"fab fa-buffer works\"></i> REGISTRATI-ACCEDI</a>
+										<a href=\"AreaPersonale/areaLogin.php\"><i class=\"fab fa-buffer works\"></i> Area Personale</a>
 
 									</nav>
 								</div>
@@ -448,7 +451,7 @@
 									<nav class=\"navigation-menu\">
 										<a href=\"Home.php\"><i class=\"fas fa-home home\"></i> HOME</a>
 										<a href=\"Prenotazione/Prenotazione.php\"><i class=\"fas fa-align-left about\"></i>PRENOTA BIGLIETTO</a>
-										<a href=\"Registrazione/loginregister/Login-Registra.php\"><i class=\"fab fa-buffer works\"></i> REGISTRATI-ACCEDI</a>
+										<a href=\"AreaPersonale/areaLoginAdmin.php\"><i class=\"fab fa-buffer works\"></i> Area personale admin</a>
 
 									</nav>
 								</div>

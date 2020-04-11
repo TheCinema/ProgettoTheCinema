@@ -84,7 +84,7 @@
 					die("eliminiamo");
 				}
 				if(isset($_POST["modifica"])) {
-						header("location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/modificaAccount.php");
+						header("location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/AreaPersonale/modificaAccount.php");
 				}
 			}
 								//Connessione con db
@@ -133,15 +133,14 @@
 
 
 			if(!isset($_SESSION["editMode"])){ //non voglio modificare
-
 				$msg.="
 
-				<input type=\"text\" name=\"usr\" value=\"$username\" readonly><a href=\"http://$ip:$porta/esPHP/TheCinema/areaLogin.php?campo=usr\" > <img  width=\"40px\" height=\"40px\" src=\" http://" .$ip .":" .$porta ."/esPHP/TheCinema/Immagini/pen.png\" /></a><br><br>
-				<input type=\"text\" name=\"mail\" value=\"$mail\" readonly><a href=\"http://$ip:$porta/esPHP/TheCinema/areaLogin.php?campo=mail\" > <img  width=\"40px\" height=\"40px\" src=\"http://" .$ip .":" .$porta ."/esPHP/TheCinema/Immagini/pen.png\" /></a><br><br>
-				<input type=\"text\" name=\"data\" value=\"$dataNascita\" readonly><a href=\"http://$ip:$porta/esPHP/TheCinema/areaLogin.php?campo=dataNascita\" > <img  width=\"40px\" height=\"40px\" src=\"http://" .$ip .":" .$porta ."/esPHP/TheCinema/Immagini/pen.png\" /></a><br><br>
+				<input type=\"text\" name=\"usr\" value=\"$username\" readonly><a href=\"http://$ip:$porta/esPHP/TheCinema/AreaPersonale/areaLogin.php?campo=usr\" > <img  width=\"40px\" height=\"40px\" src=\" http://" .$ip .":" .$porta ."/esPHP/TheCinema/Immagini/pen.png\" /></a><br><br>
+				<input type=\"text\" name=\"mail\" value=\"$mail\" readonly><a href=\"http://$ip:$porta/esPHP/TheCinema/AreaPersonale/areaLogin.php?campo=mail\" > <img  width=\"40px\" height=\"40px\" src=\"http://" .$ip .":" .$porta ."/esPHP/TheCinema/Immagini/pen.png\" /></a><br><br>
+				<input type=\"text\" name=\"data\" value=\"$dataNascita\" readonly><a href=\"http://$ip:$porta/esPHP/TheCinema/AreaPersonale/areaLogin.php?campo=dataNascita\" > <img  width=\"40px\" height=\"40px\" src=\"http://" .$ip .":" .$porta ."/esPHP/TheCinema/Immagini/pen.png\" /></a><br><br>
 							";
 
-
+				$_SESSION["editMode"]=1;
 			}else{//vogliamo modificare
 				if(isset($_GET["campo"])){
 					$campoDaModificare=$_GET["campo"];
