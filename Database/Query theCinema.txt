@@ -62,9 +62,11 @@ create table acquistaBiglietto(
 	idCliente int,
 	idProiezione int,
 		id_posto int,
+		QRCode varchar(128),
 			foreign key(id_posto) references posto(id),
    foreign key(idCliente ) references utente(idUtente ),
 	foreign key(idProiezione) references proiezione(idProiezione)
 	ON DELETE CASCADE
 	ON UPDATE CASCADE
+
 );
