@@ -138,7 +138,9 @@
 										$arrPosti[]=$ps;
 									}
 									if(isset($_POST["costo$i"])){
-										$costo+= $_POST["costo$i"];
+										$costo+=$_POST["costo$i"];
+									}else{
+										$costo+=0;
 									}
 							}
 						}

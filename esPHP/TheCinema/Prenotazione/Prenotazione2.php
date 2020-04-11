@@ -144,16 +144,7 @@
 			$ip=$_SERVER['SERVER_NAME'];  //server per vedere sei sei localhost o hai un ip
 			$porta=$_SERVER['SERVER_PORT'];   //porta del serve, perchè c'è chi ha 80, chi 8080 etc...
 
-			$ip = $_SERVER['SERVER_NAME'];  //server per vedere sei sei localhost o hai un ip
-			$porta = $_SERVER['SERVER_PORT'];   //porta del serve, perchè c'è chi ha 80, chi 8080 etc...
-			//verifico se è stato fatto il login
-			$username=$_SESSION["usrLogin"];
-			if(isset($username)){
-				//ok rimane
-			}else{
-				  header("location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/Home.php");  //viene rimandato alla Home
-					die("");
-			}
+
 
 		if(isset($_GET["idProiezione"])){
 
@@ -196,8 +187,7 @@
 
 
 		}else{
-			die("error");
-			header("location:prenotazione.php");
+			header("location:Prenotazione.php");
 		}
 
 
