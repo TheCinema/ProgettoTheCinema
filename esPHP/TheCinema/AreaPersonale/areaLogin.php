@@ -131,70 +131,75 @@
 			$mail=$_SESSION["mailLogin"];
 			$dataNascita=$_SESSION["dataLogin"];
 
-
-			if(!isset($_SESSION["editMode"])){ //non voglio modificare
-				$msg.="
-
-				<input type=\"text\" name=\"usr\" value=\"$username\" readonly><a href=\"http://$ip:$porta/esPHP/TheCinema/AreaPersonale/areaLogin.php?campo=usr\" > <img  width=\"40px\" height=\"40px\" src=\" http://" .$ip .":" .$porta ."/esPHP/TheCinema/Immagini/pen.png\" /></a><br><br>
-				<input type=\"text\" name=\"mail\" value=\"$mail\" readonly><a href=\"http://$ip:$porta/esPHP/TheCinema/AreaPersonale/areaLogin.php?campo=mail\" > <img  width=\"40px\" height=\"40px\" src=\"http://" .$ip .":" .$porta ."/esPHP/TheCinema/Immagini/pen.png\" /></a><br><br>
-				<input type=\"text\" name=\"data\" value=\"$dataNascita\" readonly><a href=\"http://$ip:$porta/esPHP/TheCinema/AreaPersonale/areaLogin.php?campo=dataNascita\" > <img  width=\"40px\" height=\"40px\" src=\"http://" .$ip .":" .$porta ."/esPHP/TheCinema/Immagini/pen.png\" /></a><br><br>
-							";
-
-				$_SESSION["editMode"]=1;
-			}else{//vogliamo modificare
 				if(isset($_GET["campo"])){
 					$campoDaModificare=$_GET["campo"];
-
 					if($campoDaModificare=="usr"){//se vuole modificare lo username
 						$_SESSION["modificoUsr"]=1;
 						$_SESSION["modificoData"]=null;  //metto a null la modifica della data
 						$_SESSION["modificaMail"]=null;		//metto a null la modifica dell'email
-
+						$_SESSION["editMode"]=1;
 					}
 					if($campoDaModificare=="mail"){//se vuole modificare la mail
 						$_SESSION["modificoMail"]=1;
 						$_SESSION["modificoData"]=null;    //metto a null la modifica della data
 						$_SESSION["modificoUsr"]=null;				//metto a null la modifica dell'usr
+						$_SESSION["editMode"]=1;
 					}
 					if($campoDaModificare=="dataNascita"){//se vuole modificare la data
 						$_SESSION["modificoData"]=1;
 						$_SESSION["modificoUsr"]=null;					//metto a null la modifica dell'usr
 						$_SESSION["modificoMail"]=null;			//metto a null la modifica dell'email
+						$_SESSION["editMode"]=1;
 					}
-				}
-
-				if(isset($_SESSION["modificoUsr"])){
-					$msg.="<form method=\"post\" action=\"modificaAccount.php\">
-					<input type=\"text\" name=\"editUsr\" value=\"$username\" ><input type=\"submit\" value=\"Aggiorna\"/><br><br>
-					<input type=\"text\" name=\"mail\" value=\"$mail\" readonly><br><br>
-					<input type=\"text\" name=\"data\" value=\"$dataNascita\" readonly><br><br>
-					</form>";
 					$_SESSION["editMode"]=null;
-				}else{
 
-					if(isset($_SESSION["modificoMail"])){
+					if(isset($_SESSION["modificoUsr"])){
 						$msg.="<form method=\"post\" action=\"modificaAccount.php\">
-						<input type=\"text\" name=\"usr\" value=\"$username\" readonly><br><br>
-						<input type=\"text\" name=\"editMail\" value=\"$mail\" ><input type=\"submit\" value=\"Aggiorna\"/><br><br>
+						<input type=\"text\" name=\"editUsr\" value=\"$username\" ><input type=\"submit\" value=\"Aggiorna\"/><br><br>
+						<input type=\"text\" name=\"mail\" value=\"$mail\" readonly><br><br>
 						<input type=\"text\" name=\"data\" value=\"$dataNascita\" readonly><br><br>
 						</form>";
 						$_SESSION["editMode"]=null;
+
 					}else{
 
-						if(isset($_SESSION["modificoData"])){//sto modificando la data
+						if(isset($_SESSION["modificoMail"])){
 							$msg.="<form method=\"post\" action=\"modificaAccount.php\">
 							<input type=\"text\" name=\"usr\" value=\"$username\" readonly><br><br>
-							<input type=\"text\" name=\"mail\" value=\"$mail\" readonly><br><br>";
-							$data = date("Y-m-d");//data odierna
- 							$msg.="<input type=\"date\" name=\"editData\" value=\"$dataNascita\" min=\"1950-01-01\" max=\"$data\" ><input type=\"submit\" value=\"Aggiorna\"/><br><br>
+							<input type=\"text\" name=\"editMail\" value=\"$mail\" ><input type=\"submit\" value=\"Aggiorna\"/><br><br>
+							<input type=\"text\" name=\"data\" value=\"$dataNascita\" readonly><br><br>
 							</form>";
-
 							$_SESSION["editMode"]=null;
+
+						}else{
+
+							if(isset($_SESSION["modificoData"])){//sto modificando la data
+								$msg.="<form method=\"post\" action=\"modificaAccount.php\">
+								<input type=\"text\" name=\"usr\" value=\"$username\" readonly><br><br>
+								<input type=\"text\" name=\"mail\" value=\"$mail\" readonly><br><br>";
+								$data = date("Y-m-d");//data odierna
+								$msg.="<input type=\"date\" name=\"editData\" value=\"$dataNascita\" min=\"1950-01-01\" max=\"$data\" ><input type=\"submit\" value=\"Aggiorna\"/><br><br>
+								</form>";
+
+								$_SESSION["editMode"]=null;
+							}
 						}
+					}
+				}else{
+					if(!isset(	$_SESSION["editMode"])){
+						$msg.="
+
+						<input type=\"text\" name=\"usr\" value=\"$username\" readonly><a href=\"http://$ip:$porta/esPHP/TheCinema/AreaPersonale/areaLogin.php?campo=usr\" > <img  width=\"40px\" height=\"40px\" src=\" http://" .$ip .":" .$porta ."/esPHP/TheCinema/Immagini/pen.png\" /></a><br><br>
+						<input type=\"text\" name=\"mail\" value=\"$mail\" readonly><a href=\"http://$ip:$porta/esPHP/TheCinema/AreaPersonale/areaLogin.php?campo=mail\" > <img  width=\"40px\" height=\"40px\" src=\"http://" .$ip .":" .$porta ."/esPHP/TheCinema/Immagini/pen.png\" /></a><br><br>
+						<input type=\"text\" name=\"data\" value=\"$dataNascita\" readonly><a href=\"http://$ip:$porta/esPHP/TheCinema/AreaPersonale/areaLogin.php?campo=dataNascita\" > <img  width=\"40px\" height=\"40px\" src=\"http://" .$ip .":" .$porta ."/esPHP/TheCinema/Immagini/pen.png\" /></a><br><br>
+									";
+
 					}
 				}
 
-			}
+
+
+
 
 			if(isset($_SESSION["modificaAvvenuta"])){
 				$msg.="Modifica avvenuta";
