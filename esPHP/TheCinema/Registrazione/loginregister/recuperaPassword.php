@@ -1,134 +1,133 @@
 <!DOCTYPE html>
 <html>
-<head>
+	<head>
+		<title>The Cinema </title>
+			<link rel="icon" href="..\Immagini\logoHome.gif" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<title>user login</title>
+	  <script src="https://kit.fontawesome.com/6871a685d8.js" crossorigin="anonymous"></script>
 
-	<title>The Cinema </title>
-		<link rel="icon" href="..\Immagini\logoHome.gif" />
-	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<title>user login</title>
-  <script src="https://kit.fontawesome.com/6871a685d8.js" crossorigin="anonymous"></script>
-
-	<style>
-				body {
-					margin: 0;
-					background: rgb(253,187,45);
-					background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(34,193,195,1) 100%);
-					/*
-					background: #8e9eab;
-				  background: -webkit-linear-gradient(to bottom, #8e9eab, #eef2f3);
-				  background: linear-gradient(to bottom, #8e9eab, #eef2f3); */
-					font-family: 'Work Sans', sans-serif;
-					font-weight: 800px;
-				}
-				.input{
-				background: #00ffff;
-				}
-
-				input[type="date"] {
-					appearance: none;
-					-webkit-appearance: none;
-					color: #00ffff;
-					font-family: 'Work Sans', sans-serif;
-					font-size: 18px;
-					border:1px solid #00ffff;
-					background:black;
-					padding:5px;
-					display: inline-block !important;
-					visibility: visible !important;
-					position: absolute;
-		top: 42%;
-		left: 65%;
-		transform: translate(-50%, -50%);
-}
-
-			input[type="date"], focus {
-			color: #00ffff;
-			box-shadow: none;
-			-webkit-box-shadow: none;
-			-moz-box-shadow: none;
-}
-
-				.card button {
-					display: block;
+		<style>
+					body {
+						margin: 0;
+						background: rgb(253,187,45);
+						background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(34,193,195,1) 100%);
+						/*
+						background: #8e9eab;
+					  background: -webkit-linear-gradient(to bottom, #8e9eab, #eef2f3);
+					  background: linear-gradient(to bottom, #8e9eab, #eef2f3); */
+						font-family: 'Work Sans', sans-serif;
+						font-weight: 800px;
+					}
+					.input{
 					background: #00ffff;
-					padding: 10px 52px;
-					border-radius: 18px;
-					color: #003B15;
-					font-weight: 600px;
-					font-size: 18px;
-					cursor: pointer;
-					position: absolute;
-					top: 90%;
-					left: 50%;
-					transform: translate(-50%, -50%);
-				}
-				.card button2 {
-					display: block;
-					background: red;
-					padding: 10px 52px;
-					border-radius: 18px;
-					color: #003B15;
-					font-weight: 600px;
-					font-size: 18px;
-					cursor: pointer;
-
-				}
-
-					.head a {
-						height: 100%;
-						padding: 0 28px;
-						display: flex;
-						align-items: center;
-						justify-content: center;
-						color: rgb(140,140,140);
-						font-size: 20px;
-						font-weight: 500;
 					}
 
-					.head .selected {
-						position: relative;
+					input[type="date"] {
+						appearance: none;
+						-webkit-appearance: none;
 						color: #00ffff;
-						font-weight: 700;
-					}
-
-					.head .selected:after {
+						font-family: 'Work Sans', sans-serif;
+						font-size: 18px;
+						border:1px solid #00ffff;
+						background:black;
+						padding:5px;
+						display: inline-block !important;
+						visibility: visible !important;
 						position: absolute;
-						content: "";
-						bottom: 0;
-						left: 0;
-						height: 5px;
-						width: 100%;
+			top: 42%;
+			left: 65%;
+			transform: translate(-50%, -50%);
+	}
+
+				input[type="date"], focus {
+				color: #00ffff;
+				box-shadow: none;
+				-webkit-box-shadow: none;
+				-moz-box-shadow: none;
+	}
+
+					.card button {
+						display: block;
 						background: #00ffff;
-						border-radius: 99px 99px 0 0;
+						padding: 10px 52px;
+						border-radius: 18px;
+						color: #003B15;
+						font-weight: 600px;
+						font-size: 18px;
+						cursor: pointer;
+						position: absolute;
+						top: 90%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+					}
+					.card button2 {
+						display: block;
+						background: red;
+						padding: 10px 52px;
+						border-radius: 18px;
+						color: #003B15;
+						font-weight: 600px;
+						font-size: 18px;
+						cursor: pointer;
+
 					}
 
-				.card {
+						.head a {
+							height: 100%;
+							padding: 0 28px;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							color: rgb(140,140,140);
+							font-size: 20px;
+							font-weight: 500;
+						}
 
-					height: 110%;
-					max-height: 650px;
-					width: 450px;
-					background: #121212;
-					border: 2px solid #00ffff;
-					border-radius: 15px;
-					overflow: hidden;
-					transition: max-height 0.2s;
-				}
+						.head .selected {
+							position: relative;
+							color: #00ffff;
+							font-weight: 700;
+						}
 
-				.logo{
-				position: absolute;
-		top: 5%;
-		left: 25%;
-		transform: translate(-50%, -50%);
-				}
+						.head .selected:after {
+							position: absolute;
+							content: "";
+							bottom: 0;
+							left: 0;
+							height: 5px;
+							width: 100%;
+							background: #00ffff;
+							border-radius: 99px 99px 0 0;
+						}
 
-			.colore{
-				color:#00ffff;
-				}
+					.card {
 
-	</style>
-</head>
+						height: 110%;
+						max-height: 650px;
+						width: 450px;
+						background: #121212;
+						border: 2px solid #00ffff;
+						border-radius: 15px;
+						overflow: hidden;
+						transition: max-height 0.2s;
+					}
+
+					.logo{
+					position: absolute;
+			top: 5%;
+			left: 25%;
+			transform: translate(-50%, -50%);
+					}
+
+				.colore{
+					color:#00ffff;
+					}
+
+		</style>
+	</head>
 <body>
 	<?php
 		session_start();

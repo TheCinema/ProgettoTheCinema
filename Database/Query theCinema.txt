@@ -1,0 +1,72 @@
+create database thecinema;
+use thecinema;
+create table utente(
+	idUtente int auto_increment primary key,
+	username varchar(32) unique,
+	mail varchar(32) unique,
+	psw varchar(32),
+	dataNascita date,
+	punti int,
+	ultimoAccesso varchar(32),
+	privilegi varchar(32) default 'user'
+
+);
+create table fila(
+	fila char(1) primary key
+);
+
+create table sala(
+	id int auto_increment primary key,
+	qualitaSchermo varchar(32),
+	costoIntero decimal(4,2),
+	costoRidottoU6 decimal(4,2)
+);
+create table posto(
+	id int auto_increment primary key,
+	numero int,
+	fila char(1),
+	disabile ENUM("si","no"),
+	idSala int,
+	foreign key(idSala) references sala(id),
+	foreign key(fila) references fila(fila)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+
+
+);
+create table film(
+	codiceFilm int auto_increment primary key,
+	nome varchar(32),
+	dataInizioProiezione date,
+	dataFineProiezione date,
+	durata time,
+	foto varchar(64)
+);
+
+create table proiezione(
+	idProiezione int auto_increment primary key,
+	idSala int,
+	codiceFilm int,
+	dataProiezione date,
+	orarioProiezione time,
+	foreign key (idSala) references sala(id),
+	foreign key (codiceFilm) references film(codiceFilm)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+
+);
+create table acquistaBiglietto(
+	codTransazione int auto_increment primary key,
+	oraAcquisto time,
+	dataAcquisto date,
+	idCliente int,
+	idProiezione int,
+		id_posto int,
+		QRCode varchar(128),
+			foreign key(id_posto) references posto(id),
+   foreign key(idCliente ) references utente(idUtente ),
+	foreign key(idProiezione) references proiezione(idProiezione)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+
+);

@@ -1,5 +1,6 @@
 <html>
   <head>
+      <title>The Cinema </title>
     <style>
               ul {
             list-style-type: none;

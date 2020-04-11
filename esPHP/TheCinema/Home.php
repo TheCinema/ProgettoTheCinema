@@ -1,6 +1,6 @@
 <html>
 
-//
+
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
   <link rel="stylesheet" type="text/css" href="style.css" />
@@ -248,7 +248,7 @@
 							<i class=\"menu-toggle-btn fas fa-bars\"></i>
 							<nav class=\"navigation-menu\">
 								<a href=\"Home.php\"><i class=\"fas fa-home home\"></i> HOME</a>
-								<a href=\"Prenotazione/prent.php\"><i class=\"fas fa-align-left about\"></i>PRENOTA BIGLIETTO</a>
+								<a href=\"Prenotazione/Prenotazione.php\"><i class=\"fas fa-align-left about\"></i>PRENOTA BIGLIETTO</a>
 								<a href=\"Registrazione/loginregister/Login-Registra.php\"><i class=\"fab fa-buffer works\"></i> REGISTRATI-ACCEDI</a>
 
 							</nav>
@@ -353,7 +353,7 @@
 									<i class=\"menu-toggle-btn fas fa-bars\"></i>
 									<nav class=\"navigation-menu\">
 										<a href=\"Home.php\"><i class=\"fas fa-home home\"></i> HOME</a>
-										<a href=\"Prenotazione/prent.php\"><i class=\"fas fa-align-left about\"></i>PRENOTA BIGLIETTO</a>
+										<a href=\"Prenotazione/Prenotazione.php\"><i class=\"fas fa-align-left about\"></i>PRENOTA BIGLIETTO</a>
 										<a href=\"Registrazione/loginregister/Login-Registra.php\"><i class=\"fab fa-buffer works\"></i> REGISTRATI-ACCEDI</a>
 
 									</nav>
@@ -447,7 +447,7 @@
 									<i class=\"menu-toggle-btn fas fa-bars\"></i>
 									<nav class=\"navigation-menu\">
 										<a href=\"Home.php\"><i class=\"fas fa-home home\"></i> HOME</a>
-										<a href=\"Prenotazione/prent.php\"><i class=\"fas fa-align-left about\"></i>PRENOTA BIGLIETTO</a>
+										<a href=\"Prenotazione/Prenotazione.php\"><i class=\"fas fa-align-left about\"></i>PRENOTA BIGLIETTO</a>
 										<a href=\"Registrazione/loginregister/Login-Registra.php\"><i class=\"fab fa-buffer works\"></i> REGISTRATI-ACCEDI</a>
 
 									</nav>
