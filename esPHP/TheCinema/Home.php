@@ -12,7 +12,7 @@
 	<script
 				src="https://kit.fontawesome.com/81c2c05f29.js"
 				crossorigin="anonymous"
-			></script>
+	></script>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -39,106 +39,107 @@
 	}
 	/* Desktop view */
 
-    *{
-      margin: 0;
-      padding: 0;
-      text-decoration: none;
-      font-family: "Open Sans",sans-serif;
-    }
+	header{
+	z-index: 9999;
+	position: fixed;
+	height: 90px;
+	width: 100%;
+	background: #2f3640;
+	}
+		*{
+			margin: 0;
+			padding: 0;
+			text-decoration: none;
+			font-family: "Open Sans",sans-serif;
+		}
 
-    header{
-			z-index: 9999;
-			position: fixed;
-      height: 90px;
-			width: 100%;
-      background: #2f3640;
-    }
+		header{
+			height: 90px;
+			background: #2f3640;
+		}
 
-    .inner-width{
+		.inner-width{
 			background: black;
-      width: 100%;
-      padding: 0 10px;
-      margin: auto;
-    }
+			max-width: 100%;
+			padding: 0 10px;
+			margin: auto;
+		}
 
-    .logo{
-      float: left;
-      padding: 20px 0;
+		.logo{
+			float: left;
+			min-left :10px;
+			padding: 20px 0;
+		}
 
-    }
+		.logo img{
+			height: 50px;
+		}
 
-    .logo img{
-      height: 50px;
-    }
+		.navigation-menu{
+			float: right;
+			display: flex;
+			align-items: center;
+			min-height: 90px;
+		}
 
-    .navigation-menu{
-      float: right;
-      display: flex;
-      align-items: center;
-      min-height: 90px;
-			position: fixed;
-			width: 100%;
-			margin-left: 60%;
-    }
+		.navigation-menu a{
+			margin-left: 10px;
+			color: #ddd;
+			text-transform: uppercase;
+			font-size: 14px;
+			padding: 12px 20px;
+			border-radius: 4px;
+			transition: .3s linear;
+		}
 
-    .navigation-menu a{
-      margin-left: 10px;
-      color: #ddd;
-      text-transform: uppercase;
-      font-size: 14px;
-      padding: 12px 20px;
-      border-radius: 4px;
-      transition: .3s linear;
-    }
+		.navigation-menu a:hover{
+			background: #fff;
+			color: #2f3640;
+			transform: scale(1.1);
+		}
 
-    .navigation-menu a:hover{
-      background: #fff;
-      color: #2f3640;
-      transform: scale(1.1);
-    }
+		.navigation-menu i{
+			margin-right: 8px;
+			font-size: 16px;
+			}
 
-    .navigation-menu i{
-      margin-right: 8px;
-      font-size: 16px;
-    }
+		.home{
+			color: #ff6b6b;
+		}
 
-    .home{
-      color: #ff6b6b;
-    }
+		.about{
+			color: #0abde3;
+		}
 
-    .about{
-      color: #0abde3;
-    }
+		.works{
+			color: #feca57;
+		}
 
-    .works{
-      color: #feca57;
-    }
+		.team{
+			color: #5f27cd;
+		}
 
-    .team{
-      color: #5f27cd;
-    }
+		.contact{
+		color: #1dd1a1;
+		}
 
-    .contact{
-      color: #1dd1a1;
-    }
-
-    .menu-toggle-btn{
-      float: right;
-      height: 90px;
-      line-height: 90px !important;
-      color: #fff;
-      font-size: 26px;
-      display: none !important;
-      cursor: pointer;
-    }
+		.menu-toggle-btn{
+			float: right;
+			height: 90px;
+			line-height: 90px !important;
+			color: #fff;
+			font-size: 26px;
+			display: none !important;
+			cursor: pointer;
+			}
 
 
-    @media screen and (max-width:1500px) {
-      .menu-toggle-btn{
-        display: block !important;
-      }
+		@media screen and (max-width:700px) {
+		.menu-toggle-btn{
+			display: block !important;
+		}
 
-      .navigation-menu{
+		.navigation-menu{
         position: fixed;
         width: 100%;
         background: #172b4d;
@@ -149,27 +150,28 @@
         box-sizing: border-box;
       }
 
-      .navigation-menu::before{
-        content: "";
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        border-bottom: 10px solid #172b4d;
-        position: absolute;
-        top: -10px;
-        right: 10px;
-      }
+		.navigation-menu::before{
+			content: "";
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;
+			border-bottom: 10px solid #172b4d;
+			position: absolute;
+			top: -10px;
+			right: 10px;
+		}
 
-      .navigation-menu a{
-        display: block;
-        margin: 10px 0;
-      }
+		.navigation-menu a{
+			display: block;
+			margin: 10px 0;
+		}
 
-      .navigation-menu.active{
-        display: block;
-      }
-    }
+		.navigation-menu.active{
+			display: block;
+		}
+		}
 
 
+/* fine navigation bar */
 
 	.logoTheCinema {
 		vertical-align: middle;
