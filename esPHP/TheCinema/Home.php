@@ -12,7 +12,7 @@
 	<script
 				src="https://kit.fontawesome.com/81c2c05f29.js"
 				crossorigin="anonymous"
-	></script>
+			></script>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -39,107 +39,106 @@
 	}
 	/* Desktop view */
 
-	header{
-	z-index: 9999;
-	position: fixed;
-	height: 90px;
-	width: 100%;
-	background: #2f3640;
-	}
-		*{
-			margin: 0;
-			padding: 0;
-			text-decoration: none;
-			font-family: "Open Sans",sans-serif;
-		}
+    *{
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      font-family: "Open Sans",sans-serif;
+    }
 
-		header{
-			height: 90px;
-			background: #2f3640;
-		}
+    header{
+			z-index: 9999;
+			position: fixed;
+      height: 90px;
+			width: 100%;
+      background: #2f3640;
+    }
 
-		.inner-width{
+    .inner-width{
 			background: black;
-			max-width: 100%;
-			padding: 0 10px;
-			margin: auto;
-		}
+      width: 100%;
+      padding: 0 10px;
+      margin: auto;
+    }
 
-		.logo{
-			float: left;
-			min-left :10px;
-			padding: 20px 0;
-		}
+    .logo{
+      float: left;
+      padding: 20px 0;
 
-		.logo img{
-			height: 50px;
-		}
+    }
 
-		.navigation-menu{
-			float: right;
-			display: flex;
-			align-items: center;
-			min-height: 90px;
-		}
+    .logo img{
+      height: 50px;
+    }
 
-		.navigation-menu a{
-			margin-left: 10px;
-			color: #ddd;
-			text-transform: uppercase;
-			font-size: 14px;
-			padding: 12px 20px;
-			border-radius: 4px;
-			transition: .3s linear;
-		}
+    .navigation-menu{
+      float: right;
+      display: flex;
+      align-items: center;
+      min-height: 90px;
+			position: fixed;
+			width: 100%;
+			margin-left: 60%;
+    }
 
-		.navigation-menu a:hover{
-			background: #fff;
-			color: #2f3640;
-			transform: scale(1.1);
-		}
+    .navigation-menu a{
+      margin-left: 10px;
+      color: #ddd;
+      text-transform: uppercase;
+      font-size: 14px;
+      padding: 12px 20px;
+      border-radius: 4px;
+      transition: .3s linear;
+    }
 
-		.navigation-menu i{
-			margin-right: 8px;
-			font-size: 16px;
-			}
+    .navigation-menu a:hover{
+      background: #fff;
+      color: #2f3640;
+      transform: scale(1.1);
+    }
 
-		.home{
-			color: #ff6b6b;
-		}
+    .navigation-menu i{
+      margin-right: 8px;
+      font-size: 16px;
+    }
 
-		.about{
-			color: #0abde3;
-		}
+    .home{
+      color: #ff6b6b;
+    }
 
-		.works{
-			color: #feca57;
-		}
+    .about{
+      color: #0abde3;
+    }
 
-		.team{
-			color: #5f27cd;
-		}
+    .works{
+      color: #feca57;
+    }
 
-		.contact{
-		color: #1dd1a1;
-		}
+    .team{
+      color: #5f27cd;
+    }
 
-		.menu-toggle-btn{
-			float: right;
-			height: 90px;
-			line-height: 90px !important;
-			color: #fff;
-			font-size: 26px;
-			display: none !important;
-			cursor: pointer;
-			}
+    .contact{
+      color: #1dd1a1;
+    }
+
+    .menu-toggle-btn{
+      float: right;
+      height: 90px;
+      line-height: 90px !important;
+      color: #fff;
+      font-size: 26px;
+      display: none !important;
+      cursor: pointer;
+    }
 
 
-		@media screen and (max-width:700px) {
-		.menu-toggle-btn{
-			display: block !important;
-		}
+    @media screen and (max-width:1500px) {
+      .menu-toggle-btn{
+        display: block !important;
+      }
 
-		.navigation-menu{
+      .navigation-menu{
         position: fixed;
         width: 100%;
         background: #172b4d;
@@ -150,28 +149,27 @@
         box-sizing: border-box;
       }
 
-		.navigation-menu::before{
-			content: "";
-			border-left: 10px solid transparent;
-			border-right: 10px solid transparent;
-			border-bottom: 10px solid #172b4d;
-			position: absolute;
-			top: -10px;
-			right: 10px;
-		}
+      .navigation-menu::before{
+        content: "";
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid #172b4d;
+        position: absolute;
+        top: -10px;
+        right: 10px;
+      }
 
-		.navigation-menu a{
-			display: block;
-			margin: 10px 0;
-		}
+      .navigation-menu a{
+        display: block;
+        margin: 10px 0;
+      }
 
-		.navigation-menu.active{
-			display: block;
-		}
-		}
+      .navigation-menu.active{
+        display: block;
+      }
+    }
 
 
-/* fine navigation bar */
 
 	.logoTheCinema {
 		vertical-align: middle;
@@ -189,8 +187,9 @@
 /* scroll immagini al centro*/
 	.swiper-container {
 		width: 100%;
+		height:30%;
 		padding-top: 80px;
-		padding-bottom: 20px;
+		padding-bottom: 0;
 	}
 	.swiper-slide {
 		background-position: center;
@@ -223,10 +222,16 @@
 
 /*blocco in basso del sito*/
 	.footer, .push {
-		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
 		background: black;
 		text-align: center;
 	  height: 100px;
+		margin-bottom: 0%;
+	}
+
+	.footer p{
+		text-align: center;
+		margin-top: 30px ;
 	}
 
 	</style>
@@ -313,7 +318,7 @@
 							</div>
 
 			    	</div>
-   				<div class=\"swiper-pagination\"></div>
+   				<div class=\"swiper-pagination\" style=\"visibility: hidden;\"></div>
 			  </div>
 
 
@@ -412,12 +417,55 @@
 												<h3></h3>
 										</div>
 									</div>
-
 								</div>
-							<div class=\"swiper-pagination\"></div>
+							<div class=\"swiper-pagination\" style=\"visibility: ;\"></div>
 						</div>
 
 
+<!--------------------------------SECONDO SCROLL IMMAGINI-------------------------------------->
+							<h3 class=\"title\">FILM POPOLARI</h3>
+						<div class=\"swiper-container\">
+							<div class=\"swiper-wrapper\">
+
+						<!-- 1 immagine -->
+							<div class=\"swiper-slide\">
+								<div class=\"imgBx\">
+									<img src=\"Immagini/marvel.jpeg\" />
+								</div>
+								<div class=\"details\">
+										<h3>Captain Marvel</h3>
+								</div>
+							</div>
+						<!-- 2 immagine -->
+							<div class=\"swiper-slide\" >
+								<div class=\"imgBx\">
+									<img src=\"\" />
+								</div>
+								<div class=\"details\">
+										<h3></h3>
+								</div>
+							</div>
+						<!-- 3 immagine -->
+								<div class=\"swiper-slide\" >
+									<div class=\"imgBx\">
+										<img src=\"\" />
+									</div>
+									<div class=\"details\">
+											<h3></h3>
+									</div>
+								</div>
+						<!-- 4 immagine -->
+								<div class=\"swiper-slide\" >
+									<div class=\"imgBx\">
+										<img src=\"\" />
+									</div>
+									<div class=\"details\">
+											<h3></h3>
+									</div>
+								</div>
+							</div>
+						<div class=\"swiper-pagination\" style=\"visibility: ;\"></div>
+					</div>
 							<script type=\"text/javascript\" src=\"swiper.min.js\"></script>
 
 							<script>
@@ -438,6 +486,8 @@
 							 },
 						 });
 					 </script>
+
+
 
  							";
 							echo $home;
@@ -506,7 +556,7 @@
 									</div>
 
 					    	</div>
-		   				<div class=\"swiper-pagination\"></div>
+		   				<div class=\"swiper-pagination\" style=\"visibility: hidden;\"></div>
 					  </div>
 
 
@@ -539,7 +589,7 @@
 $_SESSION["editMode"]=null;
 			?>
 
-			 <div class="footer">
+			 <div class="footer" >
 					 <p>theCinema@gmail.com | Progetto gestione anno 2019/2020</p>
 			 </div>
 </body>
