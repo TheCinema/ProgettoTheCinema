@@ -313,7 +313,7 @@
 							</div>
 
 			    	</div>
-   				<div class=\"swiper-pagination\"></div>
+   				<div class=\"swiper-pagination\" style=\"visibility:hidden;\"></div>
 			  </div>
 
 
@@ -413,9 +413,12 @@
 									</div>
 
 								</div>
-							<div class=\"swiper-pagination\"></div>
+							<div class=\"swiper-pagination\" style=\"visibility:hidden;\"></div>
 						</div>
-
+						<p> ciao </p>
+						<p> ciao </p>
+						<p> ciao </p>
+						<p> ciao </p>
 
 							<script type=\"text/javascript\" src=\"swiper.min.js\"></script>
 
@@ -505,7 +508,7 @@
 									</div>
 
 					    	</div>
-		   				<div class=\"swiper-pagination\"></div>
+		   				<div class=\"swiper-pagination\" style=\"visibility:hidden;\"></div>
 					  </div>
 
 

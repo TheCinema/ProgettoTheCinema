@@ -25,6 +25,11 @@
 			transform: translate(-50%, -50%);
 			}
 			*/
+			a {
+			  position: relative;
+			  left: 20px;
+			  top: 175px;
+			}
 			p {
 			border-style: inset;
 			text-align:center;
@@ -44,9 +49,9 @@
 			display: inline-block;
 			font-size: 16px;
 				background-color: #008CBA; /* Blue */
-			position: absolute;
-				top: 1000%;
-				left: 170%;
+			position: relative;
+				top: 450px;
+				left: 550px;
 				transform: translate(-50%, -50%);
 
 			}
@@ -69,6 +74,8 @@
 										font-family: 'Roboto', sans-serif;
 									  width: 1300px;
 									  margin: 30px ;
+										position: fixed;
+
 							  }
 	  .progressbar {font-family: 'Roboto', sans-serif;
 	      counter-reset: step;
@@ -143,13 +150,21 @@
 	session_start();
 	$ip=$_SERVER['SERVER_NAME'];  //server per vedere sei sei localhost o hai un ip
 	$porta=$_SERVER['SERVER_PORT'];   //porta del serve, perchè c'è chi ha 80, chi 8080 etc...
-
+	$selezionato=false;  //per vedere se è stato selezionato almeno 1
 	include "connessione.php";
 	if(isset($_SESSION["usrLogin"])){
 		//$usernameUtente=$_SESSION["usrLogin"];
 	}else{
 		header("Location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/Registrazione/loginregister/Login-Registra.php");
 		die("");
+	}
+	if(isset($_POST["annulla"])){
+		//torno indietro
+		$idPr=$_SESSION["idProiezione"];
+		header("Location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/Prenotazione/Prenotazione2.php?idProiezione=$idPr");
+		die("");
+	}else{
+		//continuo
 	}
 			if(isset($_POST["numeroPosti"])){
 				$numeroPosti=$_POST["numeroPosti"];
@@ -168,10 +183,12 @@
 										$numero[]=$app[1];
 										$lettera[]=$app[2];
 										$disabile[]= $app[3];
+										$selezionato=true;  //metto selezionato a true
 						}
 				}
-			}else{
-				die("errore");
+			}else{ //nessun posto selezionato
+				header("Location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/Prenotazione2.php");
+				die("");
 			}
 			/////stampo i biglietti selezionati con le loro informazioni///////////////
 			/*
@@ -180,6 +197,12 @@
 
 			}
 			*/
+					if($selezionato==false){ //torno a prenotazione2.php quando non è stato selezionato niente
+						//prendo l'idProiezione cosi possono essere rivisti gli stessi posti
+						$idPr=$_SESSION["idProiezione"];
+						header("Location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/Prenotazione/Prenotazione2.php?idProiezione=$idPr");
+						die("");
+					}
 
 								///vado a trovare il costo, dato che i posti sono nella stessa sala prenderò il primo///////////////////////
 								$idSalaPostoCasuale=$id[0];
@@ -208,11 +231,11 @@
 												// echo "<br><a>[$id[$i]] Posto lettera  $lettera[$i], numero  $numero[$i]</a> ";
 												 $mesCostoIntero="Costo intero $costoIntero";
 												 $mesCostoRidotto="Costo ridotto $costoRidottoU6";
-												 $msg.="<label for=\"costo\">[$id[$i]] Posto lettera  $lettera[$i], numero  $numero[$i]</label>
+												 $msg.="<a><label for=\"costo\">[$id[$i]] Posto| lettera  $lettera[$i], numero  $numero[$i]</label>
 												 					<select id=\"costo$numPosti\" name=\"costo$numPosti\">
 																	  <option value=\"$costoIntero\">$mesCostoIntero</option>
 																	  <option value=\"$costoRidottoU6\">$mesCostoRidotto</option>
-																	</select><br>";
+																	</select></a><br>";
 																	$msg.="<input  type=\"hidden\" name=\"idPosto$numPosti\" value=\"$id[$i]\"></input>";
 																	$numPosti++;
 											 }
@@ -222,11 +245,11 @@
 
 											 $msg.="</form>";
 											 echo $msg;
-
-											 echo '<pre>';
-var_dump($_SESSION);
-echo '</pre>';
-
+											/* per stampare tutte le session presenti
+												 echo '<pre>';
+												var_dump($_SESSION);
+												echo '</pre>';
+												*/
 
 
 

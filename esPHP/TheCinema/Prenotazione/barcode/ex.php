@@ -102,8 +102,12 @@ include "connessione.php";
         $pdf->SetFont('Arial','',30);
         $pdf->Cell(0,0,"                       Prenotazione",0,0,'B');
 
-
         $pdf->Ln(50);
+        $pdf->SetFont('Arial','',12);
+
+        $pdf->Code(130,70,$stringaRandom,1,10);   //stampo il barcode
+
+
 
         $pdf->SetFont('Arial','',13);
         $pdf->Cell(0,0,"Nome film:",0,0,'A');
@@ -153,10 +157,7 @@ include "connessione.php";
 
         $valore=$appe*10;
         $pdf->Ln(35+$valore);
-        $pdf->SetFont('Arial','',12);
-        $pdf->Cell(0,0,"      Da mostrare alla cassa: ",0,0,'A');
 
-        $pdf->Code(80,155+$valore,$stringaRandom,1,10);   //stampo il barcode
 
 
 

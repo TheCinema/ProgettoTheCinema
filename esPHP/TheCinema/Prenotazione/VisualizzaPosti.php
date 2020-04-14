@@ -245,7 +245,7 @@
 
                                         $msg.="<br><input type=\"submit\" class=\"button3\" value=\"invia\">
                                               <input type=\"submit\" class=\"button2\" name=\"annulla\" value=\"Deseleziona tutto\">
-                                              <input type=\"hidden\"  name=\"numeroPosti\" value=\"$id\" > </ul>
+                                              <input type=\"hidden\"  name=\"numeroPosti\" value=\"$id\" ></ul>
                                               </form>";
                                               //echo $msg;
 

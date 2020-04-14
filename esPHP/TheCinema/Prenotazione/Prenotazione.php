@@ -75,6 +75,7 @@
 									font-family: 'Roboto', sans-serif;
 								  width: 1300px;
 								  margin: 30px ;
+
 						  }
 						  .progressbar {font-family: 'Roboto', sans-serif;
 							  counter-reset: step;

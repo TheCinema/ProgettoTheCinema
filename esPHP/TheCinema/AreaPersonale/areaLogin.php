@@ -93,10 +93,10 @@
 			//Query estrapola tutti i film che ho guardato fino a oggi
 			//creo la query
 			$u = $_SESSION["user"];
-			$sql = "select f.*, p.*, acqb.*,count(acqb.codTransazione) as num_posti_comprati from acquistabiglietto acqb join utente u on(acqb.idCliente = u.idUtente)
+			$sql = "select f.*, p.*, acqb.*,count(acqb.codTransazione) as num_posti_comprati,p.dataProiezione,acqb.codTransazione from acquistabiglietto acqb join utente u on(acqb.idCliente = u.idUtente)
 				join proiezione p on(acqb.idProiezione = p.idProiezione)
 				join film f on(p.codiceFilm = f.codiceFilm) where u.username = \"$u\"
-				group by f.nome, acqb.dataAcquisto";
+				group by acqb.randomString";
 
 
 			//eseguo la Query
@@ -111,17 +111,31 @@
 											<th scope=\"col\">Orario Acquisto</th>
 											<th scope=\"col\">Numero Di Posti Acquistati</th>
 											<th scope=\"col\">Durata</th>
+											<th scope=\"col\">file prenotazione</th>
 										</tr>
 									</thead>
 									<tbody>";
+									$dataOggi=date("Y/m/d");
 			if($result->num_rows > 0){
 				while($row = $result->fetch_assoc()) {
-					$msg .= "<tr> <td scope=\"row\">  " . $row['nome'] . "</td>
-											<td>" . $row['dataAcquisto'] . "</td>
-											<td>" . $row['oraAcquisto'] . "</td>
-											<td>" . $row['num_posti_comprati'] . "</td>
-											<td>" . $row['durata'] . "</td>
-										</tr>";
+					$codTrans= $row["codTransazione"];
+					$dataProiezione=$row['dataProiezione'];
+						if($dataOggi<$dataProiezione){
+						$msg .= "<tr> <td scope=\"row\">  " . $row['nome'] . "</td>
+												<td>" . $row['dataAcquisto'] . "</td>
+												<td>" . $row['oraAcquisto'] . "</td>
+												<td>" . $row['num_posti_comprati'] . "</td>
+												<td>" . $row['durata'] . "</td>
+											</tr>";
+						}else{
+							$msg .= "<tr> <td scope=\"row\">  " . $row['nome'] . "</td>
+													<td>" . $row['dataAcquisto'] . "</td>
+													<td>" . $row['oraAcquisto'] . "</td>
+													<td>" . $row['num_posti_comprati'] . "</td>
+													<td>" . $row['durata'] . "</td>
+													<td> <a href=\"ricreaPdfPrenotazione/creaPDF.php?codTransazione=$codTrans\" >scarica<a> </td>
+												</tr>";
+						}
 				}
 			}
 			$msg .= "	</tbody>";

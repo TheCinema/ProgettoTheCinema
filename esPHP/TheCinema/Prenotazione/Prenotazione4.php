@@ -133,7 +133,6 @@
 							$numeroPosti=$_POST["numeroPosti"];
 							for($i=1;$i<=$numeroPosti;$i++){
 									if(isset($_POST["idPosto$i"])){
-										echo $_POST["idPosto$i"];
 										$ps=$_POST["idPosto$i"];
 										$arrPosti[]=$ps;
 									}
@@ -143,10 +142,13 @@
 										$costo+=0;
 									}
 							}
+						}else{
+							header("Location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/Prenotazione/Prenotazione.php");
+							die("");
 						}
 						$nmEffettivo=$numeroPosti-1;
 						$msg="<br>";
-						echo "<br> Costo totale $costo";
+						echo "<br> Costo totale $costo €";
 						$msg.= "<form action=\"EffettuaAcquisto.php\" method=\"POST\">
 										<input class=\"button2\" type=\"submit\" value=\"Acquista $nmEffettivo biglietti\"</input>
 										";
