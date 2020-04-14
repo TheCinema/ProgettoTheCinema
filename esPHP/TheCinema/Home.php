@@ -347,7 +347,6 @@
 
 			}else{
 					$_SESSION["editMode"]=null;
-				echo $_SESSION["privilegiAdmin"];
 				if(empty($_SESSION["privilegiAdmin"])){
 					//Utente con privilegi normali
 					$_SESSION["editMode"]=null;
