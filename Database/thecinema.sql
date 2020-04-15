@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 11, 2020 alle 02:15
+-- Creato il: Apr 15, 2020 alle 18:36
 -- Versione del server: 10.4.11-MariaDB
 -- Versione PHP: 7.4.4
 
@@ -34,17 +34,24 @@ CREATE TABLE `acquistabiglietto` (
   `idCliente` int(11) DEFAULT NULL,
   `idProiezione` int(11) DEFAULT NULL,
   `id_posto` int(11) DEFAULT NULL,
-  `QRCode` varchar(128) DEFAULT NULL
+  `QRCode` varchar(128) DEFAULT NULL,
+  `randomString` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `acquistabiglietto`
 --
 
-INSERT INTO `acquistabiglietto` (`codTransazione`, `oraAcquisto`, `dataAcquisto`, `idCliente`, `idProiezione`, `id_posto`, `QRCode`) VALUES
-(27, NULL, NULL, 1, 4, 1, NULL),
-(28, NULL, NULL, 1, 4, 2, NULL),
-(29, '02:09:46', '2020-04-11', 1, 5, 3, NULL);
+INSERT INTO `acquistabiglietto` (`codTransazione`, `oraAcquisto`, `dataAcquisto`, `idCliente`, `idProiezione`, `id_posto`, `QRCode`, `randomString`) VALUES
+(79, '06:29:27', '2020-04-13', 8, 4, 1, NULL, 'Z8pdexQB'),
+(80, '08:07:15', '2020-04-14', 8, 7, 9, NULL, 'IlorKZaK'),
+(81, '06:31:59', '2020-04-15', 8, 4, 2, NULL, 'EIKxIcaL'),
+(82, '06:31:59', '2020-04-15', 8, 4, 3, NULL, 'EIKxIcaL'),
+(83, '06:31:59', '2020-04-15', 8, 4, 7, NULL, 'EIKxIcaL'),
+(84, '06:31:59', '2020-04-15', 8, 4, 4, NULL, 'EIKxIcaL'),
+(85, '06:31:59', '2020-04-15', 8, 4, 5, NULL, 'EIKxIcaL'),
+(86, '06:31:59', '2020-04-15', 8, 4, 6, NULL, 'EIKxIcaL'),
+(87, '06:31:59', '2020-04-15', 8, 4, 8, NULL, 'EIKxIcaL');
 
 -- --------------------------------------------------------
 
@@ -84,8 +91,8 @@ CREATE TABLE `film` (
 --
 
 INSERT INTO `film` (`codiceFilm`, `nome`, `dataInizioProiezione`, `dataFineProiezione`, `durata`, `foto`) VALUES
-(1, 'Film1', NULL, NULL, NULL, 'Immagini\\endgame.jpeg'),
-(3, 'film2', NULL, NULL, NULL, 'Immagini\\marvel.jpeg');
+(1, 'Endgame', NULL, NULL, '02:10:00', 'Immagini\\endgame.jpeg'),
+(3, 'Captain Marvel', NULL, NULL, NULL, 'Immagini\\marvel.jpeg');
 
 -- --------------------------------------------------------
 
@@ -108,7 +115,13 @@ CREATE TABLE `posto` (
 INSERT INTO `posto` (`id`, `numero`, `fila`, `disabile`, `idSala`) VALUES
 (1, 1, 'A', 'no', 1),
 (2, 2, 'A', 'no', 1),
-(3, 1, 'A', 'no', 2);
+(3, 3, 'A', 'no', 1),
+(4, 1, 'B', 'no', 1),
+(5, 2, 'B', 'no', 1),
+(6, 3, 'B', 'no', 1),
+(7, 4, 'A', 'no', 1),
+(8, 4, 'B', 'no', 1),
+(9, 1, 'A', 'no', 2);
 
 -- --------------------------------------------------------
 
@@ -130,8 +143,8 @@ CREATE TABLE `proiezione` (
 
 INSERT INTO `proiezione` (`idProiezione`, `idSala`, `codiceFilm`, `dataProiezione`, `orarioProiezione`) VALUES
 (4, 1, 1, '2020-04-15', '19:21:00'),
-(5, 2, 1, '2020-04-15', '19:21:00'),
-(7, 1, 3, '2020-04-15', '19:21:00');
+(5, 2, 1, '2020-04-18', '19:21:00'),
+(7, 2, 3, '2020-04-18', '19:21:00');
 
 -- --------------------------------------------------------
 
@@ -176,8 +189,9 @@ CREATE TABLE `utente` (
 --
 
 INSERT INTO `utente` (`idUtente`, `username`, `mail`, `psw`, `dataNascita`, `punti`, `ultimoAccesso`, `privilegi`) VALUES
-(1, 'Fede', 'Fede', 'Fede', '2001-03-10', NULL, '02:07:04am', 'admin'),
-(2, 'giack@gmail.com', 'giack@gmail.com', 'giack@gmail.com', '2001-04-04', 0, '07:46:20pm', 'user');
+(1, 'Fede', 'Fede', 'Fede', '2001-03-10', NULL, '09:25:19pm', 'admin'),
+(2, 'giack@gmail.com', 'giack@gmail.com', 'giack@gmail.com', '2001-04-04', 0, '07:46:20pm', 'user'),
+(8, 'a@gmail.com', 'a@gmail.com', 'a@gmail.com', '2001-04-11', 0, '06:31:25pm', 'user');
 
 --
 -- Indici per le tabelle scaricate
@@ -242,7 +256,7 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT per la tabella `acquistabiglietto`
 --
 ALTER TABLE `acquistabiglietto`
-  MODIFY `codTransazione` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `codTransazione` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT per la tabella `film`
@@ -254,7 +268,7 @@ ALTER TABLE `film`
 -- AUTO_INCREMENT per la tabella `posto`
 --
 ALTER TABLE `posto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT per la tabella `proiezione`
@@ -272,7 +286,7 @@ ALTER TABLE `sala`
 -- AUTO_INCREMENT per la tabella `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idUtente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Limiti per le tabelle scaricate
