@@ -115,17 +115,43 @@
 										</tr>
 									</thead>
 									<tbody>";
-									$dataOggi=date("Y/m/d");
+
+									$data=date("Y/m/d");
+									$dataOggi = new DateTime($data);
+									////////////////////anno///////////////
+									$annoAttuale=$dataOggi->format('Y');
+								//	echo "<br> Anno Attuale " .$annoAttuale;
+									$meseAttuale=$dataOggi->format('F');
+									//////////////////////mese/////////////////////
+									//echo "<br> Mese Attuale " .$meseAttuale;
+									///////////////////giorno//////////////////
+									$giornoAttuale=$dataOggi->format('d');
+								//	echo "<br> Giorno Attuale " .$giornoAttuale;
+		////////////////////////////////////////////////////////////////////////////////////
 			if($result->num_rows > 0){
 				while($row = $result->fetch_assoc()) {
-					$codTrans= $row["codTransazione"];
-					$dataProiezione=$row['dataProiezione'];
-						if($dataOggi<$dataProiezione){
+
+				$codTrans= $row["codTransazione"];
+				$dtPren=$row["dataProiezione"];
+				$dataPren = new DateTime($dtPren);
+				/////////anno///////////////
+				$annoproiezione=$dataPren->format('Y');
+			//	echo "<br> Anno proiezione " .$annoproiezione;
+				///////////mese/////////////////////
+				$meseProiezione=$dataPren->format('F');
+		//		echo "<br> Mese proiezione" .$mesePre;
+				///////////////////giorno/////////////////
+				$giornoProiezione=$dataPren->format('d');
+		//		echo "<br> Giorno proiezione " .$giornoproiezione;
+
+				//////////////////////////////////////////////////////////////////////////////////////////
+						if($annoproiezione=$annoAttuale && $meseAttuale=$meseProiezione && $giornoAttuale>$giornoProiezione){
 						$msg .= "<tr> <td scope=\"row\">  " . $row['nome'] . "</td>
 												<td>" . $row['dataAcquisto'] . "</td>
 												<td>" . $row['oraAcquisto'] . "</td>
 												<td>" . $row['num_posti_comprati'] . "</td>
 												<td>" . $row['durata'] . "</td>
+												<td> non disponobile </td>
 											</tr>";
 						}else{
 							$msg .= "<tr> <td scope=\"row\">  " . $row['nome'] . "</td>

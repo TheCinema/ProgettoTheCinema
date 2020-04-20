@@ -249,7 +249,9 @@
 
 
 											 $msg.="</form>";
+											 echo "<script>window.open('http://$ip:$porta/esPHP/TheCinema/home.php', '_blank');</script>";
 											 echo $msg;
+
 											/* per stampare tutte le session presenti
 												 echo '<pre>';
 												var_dump($_SESSION);

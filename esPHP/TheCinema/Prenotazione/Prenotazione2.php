@@ -130,8 +130,8 @@
 <body>
 	<?php
 		//Per sistemare il problema del ERR_CACHE_MISS
-		header('Cache-Control: no cache'); //no cache
-		session_cache_limiter('private_no_expire'); // works
+	//	header('Cache-Control: no cache'); //no cache
+	//	session_cache_limiter('private_no_expire'); // works
 	?>
   <div class="container">
       <ul class="progressbar">

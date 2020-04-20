@@ -10,7 +10,8 @@
   <body>
     <?php
     session_start();
-
+    $ip=$_SERVER['SERVER_NAME'];  //server per vedere sei sei localhost o hai un ip
+    $porta=$_SERVER['SERVER_PORT'];   //porta del serve, perchè c'è chi ha 80, chi 8080 etc...
     include "connessione.php";
     if(isset($_SESSION["usrLogin"])){
       $usernameUtente=$_SESSION["usrLogin"];
@@ -19,6 +20,7 @@
       die("");
     }
 
+  
 
 
 
@@ -26,7 +28,6 @@
     $arrId=Array();
       if(isset($_POST["numeroPosti"])){
         $numPosti=$_POST["numeroPosti"];
-        echo "Valore -> " . $numPosti;
         for($i=0;$i<$numPosti;$i++){
           if(isset($_POST["id$i"])) {
             $app=$_POST["id$i"];
@@ -170,9 +171,9 @@
 
 //////////////////////////////////////////////************CODICE PER CREARE IL PDF*************************//////////////////////////////////////////////////////
 
-                                            header("location:barcode/ex.php");
+                              header("location:barcode/ex.php");
 
-          ?>
+?>
 
   </body>
 

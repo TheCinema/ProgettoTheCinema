@@ -155,15 +155,17 @@
 						$msg="<br>";
 						echo "<br> Costo totale $costo €";
 						$msg.= "<form action=\"EffettuaAcquisto.php\" method=\"POST\">
-										<input class=\"button2\" type=\"submit\" value=\"Acquista $nmEffettivo biglietti\"</input>
-										";
+										<input class=\"button2\" type=\"submit\" value=\"Acquista $nmEffettivo biglietti\" </input>";
 											for($i=0;$i<count($arrPosti);$i++){
 												$msg.="<input type=\"hidden\" value=\"$arrPosti[$i]\" name=\"id$i\"></input>";
 											}
 												$val=count($arrPosti);
-												$msg.="<input type=\"hidden\" value=\"$val\" name=\"numeroPosti\"></input>";
 											$msg.="</form>";
 						echo $msg;
+						?>
+
+
+								<?php
 						//devo reinviare i dati ad un altra pagina
 						/*
 						////////dopo che è stato cliccato il pulsante/////////////////////
