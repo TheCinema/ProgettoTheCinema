@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	include "connessione.php";
  ?>
 
 <html>
@@ -238,7 +239,7 @@
 
 		<?php
 			//non sono admin
-
+			$numeroLimiteImmagini=5;   //numero massimo di foto che posso essere prese dal database
 			$_SESSION["dataDaMantenere"]=null;
 			$_SESSION["datiLoginNonPresenti"]=null;
 			$_SESSION["logFallito"]=null;
@@ -268,50 +269,49 @@
 
 
 
+						<h3 class=\"title\">FILM RECENTI</h3>
+							<div class=\"swiper-container\">
+								<div class=\"swiper-wrapper\">
 
-					<h3 class=\"title\">FILM RECENTI</h3>
+					";
+					///////prendo le immagini dal database//////////////////////////////
+					///////////////trovo i film disponibili per la data selezionata//////////////////////
+						$arraryImmagini=Array();
+					 $film=Array();
+					 	$sql="SELECT film.foto,film.nome from film join proiezione on film.codiceFilm=proiezione.codiceFilm group by proiezione.dataProiezione LIMIT $numeroLimiteImmagini ";
+									 $records=$conn->query($sql);
+									 if ( $records == TRUE) {
+											 //echo "<br>Query eseguita!";
+									 } else {
+										 die("Errore nella query: " . $conn->error);
+									 }
+									 if($records->num_rows ==0){
+												 //	echo "la query non ha prodotto risultato";
 
+									 }else{
 
-					<div class=\"swiper-container\">
-			    	<div class=\"swiper-wrapper\">
+													 while($tupla=$records->fetch_assoc()){
+														 $immagine=$tupla["foto"];
+															 $nomeFilm=$tupla["nome"];
+															 $arraryImmagini+=Array($immagine=>$nomeFilm);
+													 }
+									}
+							foreach($arraryImmagini as $foto=>$nomeFilm){
+										$home.="
 
-					<!-- 1 immagine -->
-			      <div class=\"swiper-slide\">
-			        <div class=\"imgBx\">
-			          <img src=\"Immagini/marvel.jpeg\" />
-			        </div>
-			        <div class=\"details\">
-			            <h3>Captain Marvel</h3>
-			        </div>
-						</div>
-					<!-- 2 immagine -->
-			      <div class=\"swiper-slide\" >
-							<div class=\"imgBx\">
-								<img src=\"\" />
-							</div>
-							<div class=\"details\">
-									<h3></h3>
-							</div>
-						</div>
-					<!-- 3 immagine -->
-							<div class=\"swiper-slide\" >
-				        <div class=\"imgBx\">
-				          <img src=\"\" />
-				        </div>
-				        <div class=\"details\">
-				            <h3></h3>
-				        </div>
-							</div>
-					<!-- 4 immagine -->
-				      <div class=\"swiper-slide\" >
-								<div class=\"imgBx\">
-									<img src=\"\" />
-								</div>
-								<div class=\"details\">
-										<h3></h3>
-								</div>
-							</div>
-
+										<!-- 1 immagine -->
+								      <div class=\"swiper-slide\">
+								        <div class=\"imgBx\">
+								          <img src=\"$foto\" />
+								        </div>
+								        <div class=\"details\">
+								            <h3>$nomeFilm</h3>
+								        </div>
+											</div>
+												<!--           -->
+										";
+							}
+						$home.="
 			    	</div>
    				<div class=\"swiper-pagination\" style=\"visibility:hidden;\"></div>
 			  </div>
@@ -369,78 +369,79 @@
 					        $(\".navigation-menu\").toggleClass(\"active\");
 					      });
 					    </script>
+
+
+
+
 							<h3 class=\"title\">FILM RECENTI</h3>
+								<div class=\"swiper-container\">
+									<div class=\"swiper-wrapper\">
+
+												";
+												///////prendo le immagini dal database//////////////////////////////
+												///////////////trovo i film disponibili per la data selezionata//////////////////////
+													$arraryImmagini=Array();
+												 $film=Array();
+												 	$sql="SELECT film.foto,film.nome from film join proiezione on film.codiceFilm=proiezione.codiceFilm group by proiezione.dataProiezione LIMIT $numeroLimiteImmagini ";
+																 $records=$conn->query($sql);
+																 if ( $records == TRUE) {
+																		 //echo "<br>Query eseguita!";
+																 } else {
+																	 die("Errore nella query: " . $conn->error);
+																 }
+																 if($records->num_rows ==0){
+																			 //	echo "la query non ha prodotto risultato";
+
+																 }else{
+
+																				 while($tupla=$records->fetch_assoc()){
+																					 $immagine=$tupla["foto"];
+																						 $nomeFilm=$tupla["nome"];
+																						 $arraryImmagini+=Array($immagine=>$nomeFilm);
+																				 }
+																}
+														foreach($arraryImmagini as $foto=>$nomeFilm){
+																	$home.="
 
 
-							<div class=\"swiper-container\">
-								<div class=\"swiper-wrapper\">
+																	<!--  immagine -->
+															      <div class=\"swiper-slide\">
+															        <div class=\"imgBx\">
+															          <img src=\"$foto\" />
+															        </div>
+															        <div class=\"details\">
+															            <h3>$nomeFilm</h3>
+															        </div>
+																		</div>
+																	<!--           -->
+																	";
+														}
+													$home.="
+										    	</div>
+							   				<div class=\"swiper-pagination\" style=\"visibility:hidden;\"></div>
+										  </div>
 
-							<!-- 1 immagine -->
-								<div class=\"swiper-slide\">
-									<div class=\"imgBx\">
-										<img src=\"Immagini/marvel.jpeg\" />
-									</div>
-									<div class=\"details\">
-											<h3>Captain Marvel</h3>
-									</div>
-								</div>
-							<!-- 2 immagine -->
-								<div class=\"swiper-slide\" >
-									<div class=\"imgBx\">
-										<img src=\"\" />
-									</div>
-									<div class=\"details\">
-											<h3></h3>
-									</div>
-								</div>
-							<!-- 3 immagine -->
-									<div class=\"swiper-slide\" >
-										<div class=\"imgBx\">
-											<img src=\"\" />
-										</div>
-										<div class=\"details\">
-												<h3></h3>
-										</div>
-									</div>
-							<!-- 4 immagine -->
-									<div class=\"swiper-slide\" >
-										<div class=\"imgBx\">
-											<img src=\"\" />
-										</div>
-										<div class=\"details\">
-												<h3></h3>
-										</div>
-									</div>
 
-								</div>
-							<div class=\"swiper-pagination\" style=\"visibility:hidden;\"></div>
-						</div>
-						<p> ciao </p>
-						<p> ciao </p>
-						<p> ciao </p>
-						<p> ciao </p>
+										    <script type=\"text/javascript\" src=\"swiper.min.js\"></script>
 
-							<script type=\"text/javascript\" src=\"swiper.min.js\"></script>
-
-							<script>
-							 var swiper = new Swiper('.swiper-container', {
-							 effect: 'coverflow',
-							 grabCursor: true,
-							 centeredSlides: true,
-							 slidesPerView: 'auto',
-							 coverflowEffect: {
-									 rotate: 50,
-									 stretch: 0,
-									 depth: 100,
-									 modifier: 1,
-									 slideShadows : true,
-							 },
-							 pagination: {
-								 el: '.swiper-pagination',
-							 },
-						 });
-					 </script>
-
+										    <script>
+											   var swiper = new Swiper('.swiper-container', {
+										     effect: 'coverflow',
+										     grabCursor: true,
+										     centeredSlides: true,
+										     slidesPerView: 'auto',
+										     coverflowEffect: {
+											       rotate: 50,
+											       stretch: 0,
+											       depth: 100,
+											       modifier: 1,
+											       slideShadows : true,
+										     },
+										     pagination: {
+										       el: '.swiper-pagination',
+										     },
+										   });
+										 </script>
  							";
 							echo $home;
 
@@ -467,72 +468,75 @@
 					      });
 					    </script>
 
-							<div class=\"swiper-container\">
-					    	<div class=\"swiper-wrapper\">
-
-							<!-- 1 immagine -->
-					      <div class=\"swiper-slide\">
-					        <div class=\"imgBx\">
-					          <img src=\"Immagini/marvel.jpeg\" />
-					        </div>
-					        <div class=\"details\">
-					            <h3>Captain Marvel</h3>
-					        </div>
-								</div>
-							<!-- 2 immagine -->
-					      <div class=\"swiper-slide\" >
-									<div class=\"imgBx\">
-										<img src=\"\" />
-									</div>
-									<div class=\"details\">
-											<h3></h3>
-									</div>
-								</div>
-							<!-- 3 immagine -->
-									<div class=\"swiper-slide\" >
-						        <div class=\"imgBx\">
-						          <img src=\"\" />
-						        </div>
-						        <div class=\"details\">
-						            <h3></h3>
-						        </div>
-									</div>
-							<!-- 4 immagine -->
-						      <div class=\"swiper-slide\" >
-										<div class=\"imgBx\">
-											<img src=\"\" />
-										</div>
-										<div class=\"details\">
-												<h3></h3>
-										</div>
-									</div>
-
-					    	</div>
-		   				<div class=\"swiper-pagination\" style=\"visibility:hidden;\"></div>
-					  </div>
 
 
-					    <script type=\"text/javascript\" src=\"swiper.min.js\"></script>
 
-					    <script>
-						   var swiper = new Swiper('.swiper-container', {
-					     effect: 'coverflow',
-					     grabCursor: true,
-					     centeredSlides: true,
-					     slidesPerView: 'auto',
-					     coverflowEffect: {
-						       rotate: 50,
-						       stretch: 0,
-						       depth: 100,
-						       modifier: 1,
-						       slideShadows : true,
-					     },
-					     pagination: {
-					       el: '.swiper-pagination',
-					     },
-					   });
-					 </script>
 
+												";
+												///////prendo le immagini dal database//////////////////////////////
+												///////////////trovo i film disponibili per la data selezionata//////////////////////
+													$arraryImmagini=Array();
+												 $film=Array();
+												 	$sql="SELECT film.foto,film.nome from film join proiezione on film.codiceFilm=proiezione.codiceFilm group by proiezione.dataProiezione LIMIT $numeroLimiteImmagini ";
+																 $records=$conn->query($sql);
+																 if ( $records == TRUE) {
+																		 //echo "<br>Query eseguita!";
+																 } else {
+																	 die("Errore nella query: " . $conn->error);
+																 }
+																 if($records->num_rows ==0){
+																			 //	echo "la query non ha prodotto risultato";
+
+																 }else{
+
+																				 while($tupla=$records->fetch_assoc()){
+																					 $immagine=$tupla["foto"];
+																						 $nomeFilm=$tupla["nome"];
+																						 $arraryImmagini+=Array($immagine=>$nomeFilm);
+																				 }
+																}
+														foreach($arraryImmagini as $foto=>$nomeFilm){
+																	$home.="
+
+
+																	<!-- 1 immagine -->
+															      <div class=\"swiper-slide\">
+															        <div class=\"imgBx\">
+															          <img src=\"$foto\" />
+															        </div>
+															        <div class=\"details\">
+															            <h3>$nomeFilm</h3>
+															        </div>
+																		</div>
+																	<!--           -->
+																	";
+														}
+													$home.="
+										    	</div>
+							   				<div class=\"swiper-pagination\" style=\"visibility:hidden;\"></div>
+										  </div>
+
+
+										    <script type=\"text/javascript\" src=\"swiper.min.js\"></script>
+
+										    <script>
+											   var swiper = new Swiper('.swiper-container', {
+										     effect: 'coverflow',
+										     grabCursor: true,
+										     centeredSlides: true,
+										     slidesPerView: 'auto',
+										     coverflowEffect: {
+											       rotate: 50,
+											       stretch: 0,
+											       depth: 100,
+											       modifier: 1,
+											       slideShadows : true,
+										     },
+										     pagination: {
+										       el: '.swiper-pagination',
+										     },
+										   });
+										 </script>
  								";
 									$_SESSION["editMode"]=null;
 							echo $home;
