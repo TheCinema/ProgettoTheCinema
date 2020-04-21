@@ -3,15 +3,11 @@
 		<title>The Cinema </title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<style>
-								a:hover{
-							border:2px solid red;
-							}
-							a{
-						border:2px solid black;
-						}
+
 							body {
 								margin:auto;
 								background: rgb(253,187,45);
+								background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(34,193,195,1) 100%);
 
 								font-family: 'Roboto', sans-serif;
 								font-weight: 800;
@@ -140,6 +136,15 @@
 							  position: relative;
 										top: 70%;
 							}
+							table{
+								width: 150px;
+							}
+							a:hover{
+								border:2px solid red;
+							}
+								a{
+									border:2px solid black;
+							}
 	</style>
 </head>
 
@@ -188,13 +193,13 @@
 										$dataAttuale = date("Y-m-d");
 											$msg=" <br><form action=\"Prenotazione.php\" method=\"POST\" ><input type=\"date\"
 							name=\"data\" value=\"$dataSelezionata\"  min=\"$dataAttuale\" ></input>
-							<input type=\"submit\" value=\"invia\"></input>"; //1.invio il dato
+							<input type=\"submit\" value=\"invia\"></input><br>"; //1.invio il dato
 						//	$_SESSION["data"]=null;
 					}else{
 								$dataAttuale = date("Y-m-d");
 						$msg=" <br><form action=\"Prenotazione.php\" method=\"POST\" ><input type=\"date\"
 							name=\"data\" value=\"$dataAttuale\"  min=\"$dataAttuale\" ></input>
-							<input type=\"submit\" value=\"invia\"></input>";
+							<input type=\"submit\" value=\"invia\"></input><br>";
 				}
 
 
@@ -235,9 +240,14 @@
 							          //echo "<br>$nome : $codice";
 							        //	$msg.="<br><input type=\"submit\" value=\"Invia\"></input>
 							          //			</form>";
-							          $msg="<table>";
+							          $msg="<br><table>";
+													$msg.="<tr>
+																<th style=\"text-align:center;\">Film </th>
+																<th style=\"text-align:center;\">Orario</th>
+																
+																</tr>";
 							          foreach($film as $id=>$foto){
-								          	$msg.= "<tr><td><img width=\"300px\" height=\"200px\" src=\"$foto\"></img><br></td>";
+								          	$msg.= "<tr width=\"10%\"><td><img width=\"300px\" height=\"200px\" src=\"$foto\"></img><br></td>";
 														$immagineOra="Immagini/1.png";
 														///////////////////////////////trovo gli orari disponibili per ciascun film(id)///////////////////////////////////
 														$sql = "SELECT proiezione.orarioProiezione,proiezione.idProiezione from proiezione join film on proiezione.codiceFilm=film.codiceFilm where proiezione.codiceFilm=\"$id\"";
@@ -257,7 +267,7 @@
 																								 $idProiezione=$tupla["idProiezione"];
 														                     $ora=$tupla["orarioProiezione"];
 																								 //<img width=\"50px\" height=\"50px\"src=\"$immagineOra\"></img>
-																									$msg.= "<td><a href=\"Prenotazione2.php?idProiezione=$idProiezione\">$ora</a><br></td>";
+																									$msg.= "<td ><a href=\"Prenotazione2.php?idProiezione=$idProiezione\">$ora</a></td>";
 																							//	 $msg.= "<td><button class=\"button3\" onclick=\"window.location.href = \"Prenotazione2.php?id=$idProiezione\";\"  ></button><br></td> ";
 
 

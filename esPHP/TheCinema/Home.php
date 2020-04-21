@@ -224,10 +224,11 @@
 
 /*blocco in basso del sito*/
 	.footer, .push {
-		border-top: 1px solid #ccc;
+		border-top: 0px solid #ccc;
 		background: black;
 		text-align: center;
-	  height: 100px;
+	  height: 0px;
+
 	}
 
 	</style>
@@ -337,7 +338,6 @@
 			     },
 			   });
 			 </script>
-
 
 
 					";
@@ -546,7 +546,8 @@ $_SESSION["editMode"]=null;
 			?>
 
 			 <div class="footer">
-					 <p>theCinema@gmail.com | Progetto gestione anno 2019/2020</p>
+					 <p style="color:white;">theCinema@gmail.com  </p>
+					 <p style="color:white;">Progetto gestione anno 2019/2020 </p>
 			 </div>
 </body>
 </html>
