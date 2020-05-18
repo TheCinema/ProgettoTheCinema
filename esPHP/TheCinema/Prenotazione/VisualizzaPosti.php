@@ -104,6 +104,7 @@
         		left: -100%;
         		transform: translate(-50%, -50%);
         	}
+
     </style>
   </head>
     <body>
@@ -200,14 +201,17 @@
                                     <ul>";
                                     $struttura=Array();
 
-                                    echo "<br>";
-                                    $msg="<form action=\"prenotazione3.php\" method=\"post\">
-                                          <ul>";
+                                    echo "";
+                                    $msg="<form action=\"prenotazione3.php\" style=\"width: 100%; margin-top: 80px; padding-right: 85px;\" method=\"post\">
+                                          <ul>
+                                          ";
                                           $id=1;
                                           $height="20px";
                                         $width="20px";
                                     for($j=0;$j<count($fileMAX);$j++){
-
+                                      $n=$j;
+                                      $n++;
+                                      $msg.= "Fila  $n    -";
                                         for($i=0;$i<count($gestionePosti);$i++){
                                           $idPosto=$gestionePosti[$i]->getId();
                                           $numeriPosto=$gestionePosti[$i]->getNumero();
@@ -218,22 +222,22 @@
                                           if($fileMAX[$j]==$filaPosto){
                                             if($disabilePosto=="si" && $occupatoPosto=="si"){
                                               $msg.="<li><input type=\"checkbox\" name=\"$id\" id=\"posto$id\" disabled />
-                                                <label for=\"posto$id\"><img height=\"$height\" width\=\"$width\" src=\"Immagini\DisabileOccupato.png\" /></label>
+                                                <label for=\"posto$id\"  style=\"border: 2px solid black; border-radius: 25px;\"><img height=\"$height\" width\=\"$width\" src=\"Immagini\DisabileOccupato.png\" /></label>
                                               </li> ";
                                               $id++;
                                             }if($disabilePosto=="si" && $occupatoPosto=="no"){
                                               $msg.="<li><input type=\"checkbox\" name=\"$id\" id=\"posto$id\" value=\"$idSala?$numeriPosto?$filaPosto?$disabilePosto\"  />
-                                                <label for=\"posto$id\"><img height=\"$height\" width\=\"$width\" src=\"Immagini\Disabile.png\" /></label>
+                                                <label for=\"posto$id\"  style=\"border: 2px solid black; border-radius: 25px;\"><img height=\"$height\" width\=\"$width\" src=\"Immagini\Disabile.png\" /></label>
                                               </li> ";
                                                 $id++;
                                             }if($disabilePosto=="no" && $occupatoPosto=="no"){
                                               $msg.="<li><input type=\"checkbox\" name=\"$id\" id=\"posto$id\"  value=\"$idPosto?$numeriPosto?$filaPosto?$disabilePosto\" />
-                                                <label for=\"posto$id\"><img height=\"$height\" width\=\"$width\" src=\"Immagini\Sedie\chairLibera$numeriPosto.jpg\" /></label>
+                                                <label for=\"posto$id\"  style=\"border: 2px solid black; border-radius: 25px;\"><img height=\"$height\" width\=\"$width\" src=\"Immagini\Sedie\chairLibera$numeriPosto.png\" /></label>
                                               </li> ";
                                                 $id++;
                                             }if($disabilePosto=="no" && $occupatoPosto=="si"){
                                               $msg.="<li><input type=\"checkbox\" name=\"$id\" id=\"posto$id\" disabled />
-                                                <label for=\"posto$id\"><img height=\"$height\" width\=\"$width\" src=\"Immagini\chair.png\" /></label>
+                                                <label for=\"posto$id\"  style=\"border: 2px solid black; border-radius: 25px;\"><img height=\"$height\" width\=\"$width\" src=\"Immagini\chair.png\" /></label>
                                               </li> ";
                                                 $id++;
                                             }
@@ -243,13 +247,15 @@
                                         $msg.="<br>";
                                     }
 
-                                        $msg.="<br><input type=\"submit\" class=\"button3\" value=\"invia\">
-                                              <input type=\"submit\" class=\"button2\" name=\"annulla\" value=\"Deseleziona tutto\">
-                                              <input type=\"hidden\"  name=\"numeroPosti\" value=\"$id\" ></ul>
-                                              </form>";
-                                              //echo $msg;
+      $msg.="
+      <br>
+        <input type=\"submit\" style=\"margin-left: 3%; border-radius: 25px; border: 2px solid black; width: 200px; height: 60px; background-color: #d25050; font-weight: bold;\" name=\"annulla\" value=\"DESELEZIONA TUTTO\">
+        <input type=\"submit\" style=\"border-radius: 25px; border: 2px solid black;  width: 200px; height: 60px;  background-color:#6cdf66;  font-weight: bold;\" value=\"CONFERMA\">
+        <input type=\"hidden\"  name=\"numeroPosti\" value=\"$id\" ></ul>
+      </form>";
 
-                                              echo $msg;
+
+    echo $msg;
 
 
 

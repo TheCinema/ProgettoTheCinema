@@ -20,7 +20,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 	<meta charset="utf-8">
-	<title></title>
+	<title>The Cinema</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="style.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
@@ -30,47 +30,56 @@
 <style>
   @import url("https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css");
 	@import url('https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap');
-
+	@font-face {
+		font-family: "font";
+		src: url(font.ttf);
+	}
+	@font-face {
+		font-family: "font2";
+		src: url(font2.ttf);
+	}
 	body {
-		background: rgb(253,187,45);
-		background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(34,193,195,1) 100%);
+		background-color: #FAD961;
+		background-image: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);
+		margin:0;
 		min-height: 100vh;
-		font-family: 'Poppins';
+		font-family: 'font2';
 		overflow-x: hidden;
 	}
 	/* Desktop view */
 
 	header{
-	z-index: 9999;
-	position: fixed;
-	height: 90px;
-	width: 100%;
-	background: #2f3640;
+		z-index: 9999;
+		position: fixed;
+		height: 90px;
+		width: 100%;
+		background: #2f3640;
 	}
-		*{
-			margin: 0;
-			padding: 0;
-			text-decoration: none;
-			font-family: "Open Sans",sans-serif;
-		}
+	*{
+		margin: 0;
+		padding: 0;
+		text-decoration: none;
+		font-family: "Open Sans",sans-serif;
+	}
 
-		header{
-			height: 90px;
-			background: #2f3640;
-		}
+	header{
+		margin: 0;
+		height: 90px;
+		background: #2f3640;
+	}
 
-		.inner-width{
-			background: black;
-			max-width: 100%;
-			padding: 0 10px;
-			margin: auto;
-		}
+	.inner-width{
+		background: black;
+		max-width: 100%;
+		padding: 0 10px;
+		margin: auto;
+	}
 
-		.logo{
-			float: left;
-			min-left :10px;
-			padding: 20px 0;
-		}
+	.logo{
+		float: left;
+		min-left :10px;
+		padding: 20px 0;
+	}
 
 		.logo img{
 			height: 50px;
@@ -202,7 +211,8 @@
 	}
 	.swiper-slide .imgBx{
 		width: 100%;
-		height: 100%;
+		height: auto;
+		max-height:500px;
 		overflow: hidden;
 	}
 
@@ -231,6 +241,30 @@
 
 	}
 
+	.titolo{
+		padding-top: 150px;
+		width: 100%;
+		height: 200px;
+		text-align: center;
+	}
+	.titolohead{
+		font-size: 50px;
+		font-weight: bold;
+		height: 50%;
+		width: 100%;
+		font-family: "font";
+	}
+	.titoloinfo{
+		font-family: "font2";
+		padding-top: 55px;
+		font-size: 25px;
+		height: 50%;
+		width: 100%;
+	}
+	h3{
+		font-weight: 700;
+		font-family: "font2";
+	}
 	</style>
 
 </head>
@@ -251,7 +285,6 @@
 					$home = "
 					<header>
 						<div class=\"inner-width\">
-							<a href=\"#\" class=\"logo\"><img src=\"logo.png\" alt=\"\"></a>
 							<i class=\"menu-toggle-btn fas fa-bars\"></i>
 							<nav class=\"navigation-menu\">
 								<a href=\"Home.php\"><i class=\"fas fa-home home\"></i> HOME</a>
@@ -270,8 +303,17 @@
 
 
 
-						<h3 class=\"title\">FILM RECENTI</h3>
-							<div class=\"swiper-container\">
+
+													<div class=\"titolo\">
+														<div class=\"titolohead\">
+														FILM POPOLARI
+														</div>
+														<div class=\"titoloinfo\">
+														Questi sono i film più in voga usciti al cinema, usa il mouse per sfogliare il catalogo. Corri subito a guardarli!
+														<br />
+														</div>
+													</div>
+							<div class=\"swiper-container\"  style=\"margin-top: 40px\">
 								<div class=\"swiper-wrapper\">
 
 					";
@@ -279,7 +321,7 @@
 					///////////////trovo i film disponibili per la data selezionata//////////////////////
 						$arraryImmagini=Array();
 					 $film=Array();
-					 	$sql="SELECT film.foto,film.nome from film join proiezione on film.codiceFilm=proiezione.codiceFilm group by proiezione.dataProiezione LIMIT $numeroLimiteImmagini ";
+					 	$sql="SELECT film.foto,film.nome from film join proiezione on film.codiceFilm=proiezione.codiceFilm order by proiezione.dataProiezione LIMIT $numeroLimiteImmagini ";
 									 $records=$conn->query($sql);
 									 if ( $records == TRUE) {
 											 //echo "<br>Query eseguita!";
@@ -300,17 +342,17 @@
 							foreach($arraryImmagini as $foto=>$nomeFilm){
 										$home.="
 
-										<!-- 1 immagine -->
-								      <div class=\"swiper-slide\">
-								        <div class=\"imgBx\">
-								          <img src=\"$foto\" />
-								        </div>
-								        <div class=\"details\">
-								            <h3>$nomeFilm</h3>
-								        </div>
-											</div>
-												<!--           -->
-										";
+										<!--  immagine
+											<div class=\"swiper-slide\">
+												<div class=\"imgBx\">
+													<img src=\"Immagini\\$foto\" />
+												</div>
+												<div class=\"details\">
+														<h3>$nomeFilm</h3>
+												</div>-->
+
+
+								 </div>";
 							}
 						$home.="
 			    	</div>
@@ -353,7 +395,6 @@
 							$home="
 							<header>
 								<div class=\"inner-width\">
-									<a href=\"#\" class=\"logo\"><img src=\"logo.png\" alt=\"\"></a>
 									<i class=\"menu-toggle-btn fas fa-bars\"></i>
 									<nav class=\"navigation-menu\">
 										<a href=\"Home.php\"><i class=\"fas fa-home home\"></i> HOME</a>
@@ -372,9 +413,18 @@
 
 
 
+							<div class=\"titolo\">
+								<div class=\"titolohead\">
+								FILM POPOLARI
+								</div>
+								<div class=\"titoloinfo\">
+								Questi sono i film più popolari usciti al cinema, usa il mouse per sfogliare il catalogo. Corri subito a guardarli!
+								<br />
+								</div>
+							</div>
 
-							<h3 class=\"title\">FILM RECENTI</h3>
-								<div class=\"swiper-container\">
+
+								<div class=\"swiper-container\" style=\"margin-top: 40px\">
 									<div class=\"swiper-wrapper\">
 
 												";
@@ -382,7 +432,7 @@
 												///////////////trovo i film disponibili per la data selezionata//////////////////////
 													$arraryImmagini=Array();
 												 $film=Array();
-												 	$sql="SELECT film.foto,film.nome from film join proiezione on film.codiceFilm=proiezione.codiceFilm group by proiezione.dataProiezione LIMIT $numeroLimiteImmagini ";
+												 	$sql="SELECT film.foto,film.nome from film join proiezione on film.codiceFilm=proiezione.codiceFilm order by proiezione.dataProiezione LIMIT $numeroLimiteImmagini ";
 																 $records=$conn->query($sql);
 																 if ( $records == TRUE) {
 																		 //echo "<br>Query eseguita!";
@@ -401,19 +451,20 @@
 																				 }
 																}
 														foreach($arraryImmagini as $foto=>$nomeFilm){
+
 																	$home.="
 
 
-																	<!--  immagine -->
+																	<!--  immagine ENDGAME -->
 															      <div class=\"swiper-slide\">
 															        <div class=\"imgBx\">
-															          <img src=\"$foto\" />
+															          <img src=\"Immagini\\$foto\"/>
 															        </div>
 															        <div class=\"details\">
 															            <h3>$nomeFilm</h3>
 															        </div>
 																		</div>
-																	<!--           -->
+
 																	";
 														}
 													$home.="
@@ -451,7 +502,7 @@
 							$home="
 							<header>
 								<div class=\"inner-width\">
-									<a href=\"#\" class=\"logo\"><img src=\"logo.png\" alt=\"\"></a>
+
 									<i class=\"menu-toggle-btn fas fa-bars\"></i>
 									<nav class=\"navigation-menu\">
 										<a href=\"Home.php\"><i class=\"fas fa-home home\"></i> HOME</a>
@@ -468,20 +519,29 @@
 					      });
 					    </script>
 
+							<div class=\"titolo\">
+								<div class=\"titolohead\">
+								FILM POPOLARI
+								</div>
+								<div class=\"titoloinfo\">
+								Questi sono i film più popolari usciti al cinema, usa il mouse per sfogliare il catalogo. Corri subito a guardarli!
+								<br />
+								</div>
+							</div>
 
-
-
+							<div class=\"swiper-container\" style=\"margin-top: 40px\">
+								<div class=\"swiper-wrapper\">
 
 												";
 												///////prendo le immagini dal database//////////////////////////////
 												///////////////trovo i film disponibili per la data selezionata//////////////////////
 													$arraryImmagini=Array();
 												 $film=Array();
-												 	$sql="SELECT film.foto,film.nome from film join proiezione on film.codiceFilm=proiezione.codiceFilm group by proiezione.dataProiezione LIMIT $numeroLimiteImmagini ";
+												 	$sql="SELECT film.foto,film.nome from film join proiezione on film.codiceFilm=proiezione.codiceFilm order by proiezione.dataProiezione LIMIT $numeroLimiteImmagini ";
 																 $records=$conn->query($sql);
-																 if ( $records == TRUE) {
+																 if($records == TRUE) {
 																		 //echo "<br>Query eseguita!";
-																 } else {
+																 }else {
 																	 die("Errore nella query: " . $conn->error);
 																 }
 																 if($records->num_rows ==0){
@@ -502,7 +562,7 @@
 																	<!-- 1 immagine -->
 															      <div class=\"swiper-slide\">
 															        <div class=\"imgBx\">
-															          <img src=\"$foto\" />
+															          <img src=\"Immagini\\$foto\" />
 															        </div>
 															        <div class=\"details\">
 															            <h3>$nomeFilm</h3>
@@ -546,7 +606,7 @@ $_SESSION["editMode"]=null;
 			?>
 
 			 <div class="footer">
-					 <p style="color:white;">theCinema@gmail.com  </p>
+					 <p style="color:white; border-top: 2px solid black;">theCinema@gmail.com  </p>
 					 <p style="color:white;">Progetto gestione anno 2019/2020 </p>
 			 </div>
 </body>

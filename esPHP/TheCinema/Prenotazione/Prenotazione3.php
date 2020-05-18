@@ -1,8 +1,37 @@
+
+<?php
+header('Cache-Control: no cache'); //no cache
+session_cache_limiter('private_no_expire');
+session_start();
+$ip=$_SERVER['SERVER_NAME'];  //server per vedere sei sei localhost o hai un ip
+$porta=$_SERVER['SERVER_PORT'];
+
+?>
 <html>
 	<head>
+
 			<title>The Cinema </title>
+			<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+			<script src="https://kit.fontawesome.com/81c2c05f29.js"	crossorigin="anonymous"></script>
+			<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+			<script type="text/javascript">
+				$(".menu-toggle-btn").click(function(){
+					$(this).toggleClass("fa-times");
+					$(".navigation-menu").toggleClass("active");
+				});
+			</script>
+			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+			<style>
+			@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css");
+			@import url('https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap');
 		<style>
-			body {
+			body{
 				margin:auto;
 				background: rgb(253,187,45);
 				background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(34,193,195,1) 100%);
@@ -12,75 +41,106 @@
 			}
 
 			form{
-			position: absolute;
-			top: 25%;
-			left: 20%;
-			transform: translate(-50%, -50%);
+				width:100%;
+				text-align: center;
+				position: absolute;
+				top: 180px;
 			}
-			/*
-			a{
-			position: absolute;
-			top: 60%;
-			left: 20%;
-			transform: translate(-50%, -50%);
-			}
-			*/
-			a {
-			  position: relative;
-			  left: 20px;
-			  top: 175px;
-			}
-			p {
-			border-style: inset;
-			text-align:center;
-			position: absolute;
-			top: 20%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			 font-size: 34px;
-			padding: 30px;
-			}
-			.buttonConferma{
-				border: none;
-			color: white;
-			padding: 15px 32px;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 16px;
-				background-color: #008CBA; /* Blue */
-			position: relative;
-				top: 450px;
-				left: 550px;
-				transform: translate(-50%, -50%);
 
+
+
+			header{
+				width: 100%;
+				height: 90px;
+				background: #2f3640;
 			}
-		.button2 {
-			border: none;
-	  color: white;
-	  padding: 15px 32px;
-	  text-align: center;
-	  text-decoration: none;
-	  display: inline-block;
-	  font-size: 16px;
-			background-color: #008CBA; /* Blue */
-		position: absolute;
-			top: 100%;
-			left: 50%;
-			transform: translate(-50%, -50%);
+
+		.inner-width{
+			background: black;
+			max-width: 100%;
+			padding: 0 10px;
 		}
 
-				.container {
-										font-family: 'Roboto', sans-serif;
-									  width: 1300px;
-									  margin: 30px ;
-										position: fixed;
+		.logo{
+			float: left;
+			min-left :10px;
+			padding: 0 0;
+		}
 
-							  }
-	  .progressbar {font-family: 'Roboto', sans-serif;
-	      counter-reset: step;
+		.logo img{
+			height: 30px;
+		}
 
-	  }
+		.navigation-menu{
+			float: right;
+			display: flex;
+			align-items: center;
+			min-height: 90px;
+		}
+		.navigation-menu a{
+			margin-left: 10px;
+			color: #ddd;
+			text-transform: uppercase;
+			font-size: 14px;
+			padding: 12px 20px;
+			border-radius: 6px;
+			transition: .3s linear;
+		}
+		.navigation-menu a:hover{
+			background: #fff;
+			color: #2f3640;
+			transform: scale(1.1);
+		}
+		.navigation-menu i{
+			margin-right: 8px;
+			font-size: 16px;
+			}
+
+		.home{
+			color: #ff6b6b;
+		}
+
+		.about{
+			color: #0abde3;
+		}
+
+		.works{
+			color: #feca57;
+		}
+
+		.team{
+			color: #5f27cd;
+		}
+
+		.contact{
+		color: #1dd1a1;
+		}
+
+		.menu-toggle-btn{
+			float: right;
+			height: 90px;
+			line-height: 90px !important;
+			color: #fff;
+			font-size: 26px;
+			display: none !important;
+			cursor: pointer;
+			}
+
+			.container{
+			  width: 100%;
+				height: 61px;
+				text-align: center;
+				margin: 20px 0;
+				margin-right: 0;
+				padding: 0;
+			 }
+		  .progressbar {
+				padding: 0;
+				width: 100%;
+				text-align: center;
+				position: fixed;
+		    counter-reset: step;
+		  }
 	  .progressbar li {
 		  font-family: 'Roboto', sans-serif;
 	      list-style-type: none;
@@ -137,24 +197,32 @@
 		</style>
 	</head>
 
-<body>
-	<?php
-		//Per sistemare il problema del ERR_CACHE_MISS
-		header('Cache-Control: no cache'); //no cache
-		session_cache_limiter('private_no_expire'); // works
-	?>
+<body style="background-color: #FAD961;
+background-image: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);
+">
+
+	<header>
+		<div class="inner-width">
+			<a href="#" class="logo"><img src="logo.png" alt=""></a>
+			<i class="menu-toggle-btn fas fa-bars"></i>
+			<nav class="navigation-menu">
+				<a href="../Home.php"><i class="fas fa-home home"></i> HOME</a>
+				<a href="Prenotazione.php"><i class="fas fa-align-left about"></i>PRENOTA BIGLIETTO</a>
+				<a href="../AreaPersonale/areaLogin.php"><i class="fab fa-buffer works"></i> AREA PERSONALE</a>
+
+			</nav>
+		</div>
+	</header>
   <div class="container">
      <ul class="progressbar">
-          <li >Scegli il film</li>
-          <li>Seleziona i posti</li>
-          <li class="active">Ricapitolo</li>
-          <li>Pagamento</li>
+          <li >FILM</li>
+          <li>POSTI</li>
+          <li class="active">RIEPILOGO</li>
+          <li>PAGAMENTO</li>
   </ul>
 
 	<?php
-	session_start();
-	$ip=$_SERVER['SERVER_NAME'];  //server per vedere sei sei localhost o hai un ip
-	$porta=$_SERVER['SERVER_PORT'];   //porta del serve, perchè c'è chi ha 80, chi 8080 etc...
+
 	$selezionato=false;  //per vedere se è stato selezionato almeno 1
 	include "connessione.php";
 	if(isset($_SESSION["usrLogin"])){
@@ -195,13 +263,7 @@
 				header("Location: http://" .$ip .":" .$porta ."/esPHP/TheCinema/Prenotazione2.php");
 				die("");
 			}
-			/////stampo i biglietti selezionati con le loro informazioni///////////////
-			/*
-			for($i=0;$i<count($numero);$i++){
-				echo "<br>[$id[$i]] Posto lettera  $lettera[$i], numero  $numero[$i] ";
 
-			}
-			*/
 					if($selezionato==false){ //torno a prenotazione2.php quando non è stato selezionato niente
 						//prendo l'idProiezione cosi possono essere rivisti gli stessi posti
 						$idPr=$_SESSION["idProiezione"];
@@ -232,32 +294,42 @@
 											 }
 											 $msg="<form action=\"prenotazione4.php\" method=\"POST\">";
 											 $numPosti=1;
+
+											 if(count($numero)==1){
+												 $msg.="
+															 <p style=\"font-weight: bold; font-size: 40px\">RIEPILOGO</p>
+															 <br />";
+											 }else{
+												 $dim=count($numero);
+												  $msg.="
+												 	<p  style=\"font-weight: bold; font-size: 40px\">In basso trovi il resoconto dei $dim posti scelti</p>
+													<br />";
+											 }
 											 for($i=0;$i<count($numero);$i++){
 												// echo "<br><a>[$id[$i]] Posto lettera  $lettera[$i], numero  $numero[$i]</a> ";
 												 $mesCostoIntero="Costo intero $costoIntero";
 												 $mesCostoRidotto="Costo ridotto $costoRidottoU6";
-												 $msg.="<a><label for=\"costo\">[$id[$i]] Posto| lettera  $lettera[$i], numero  $numero[$i]</label>
-												 					<select id=\"costo$numPosti\" name=\"costo$numPosti\">
+												 $n=$i;
+												 $n++;
+
+												 $msg.="
+
+												 				<label for=\"costo\">Fila  $lettera[$i], Posto  $numero[$i]</label>
+												 					<select style=\"border-radius: 25px\" id=\"costo$numPosti\" name=\"costo$numPosti\">
 																	  <option value=\"$costoIntero\">$mesCostoIntero</option>
 																	  <option value=\"$costoRidottoU6\">$mesCostoRidotto</option>
-																	</select></a><br>";
+																	</select><br>";
 																	$msg.="<input  type=\"hidden\" name=\"idPosto$numPosti\" value=\"$id[$i]\"></input>";
 																	$numPosti++;
-											 }
-											 $msg.="<input class=\"buttonConferma\" type=\"submit\" value=\"Conferma ed acquista\"></input>";
-											 $msg.="<input  type=\"hidden\" name=\"numeroPosti\" value=\"$numPosti\"></input>";   //invio il numero totale di posti
+													}
 
 
-											 $msg.="</form>";
-											 echo "<script>window.open('http://$ip:$porta/esPHP/TheCinema/home.php', '_blank');</script>";
+										 $msg.="
+											 <input style=\"border: 2px solid black; border-radius: 25px; margin-top: 50px; width: 200px; height: 50px; font-weight: bold\" type=\"submit\" value=\"VAI AL PAGAMENTO\"></input>
+											 <input  type=\"hidden\" name=\"numeroPosti\" value=\"$numPosti\"></input>
+											</form>";
+
 											 echo $msg;
-
-											/* per stampare tutte le session presenti
-												 echo '<pre>';
-												var_dump($_SESSION);
-												echo '</pre>';
-												*/
-
 
 
 			?>
