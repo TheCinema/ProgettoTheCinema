@@ -337,7 +337,7 @@
 			///////////////trovo i film disponibili per la data selezionata//////////////////////
 		$film=Array();
 		$sql = "SELECT film.foto,film.codiceFilm from film join proiezione on film.codiceFilm=proiezione.codiceFilm where proiezione.DataProiezione=\"$data\"";
-
+		$msg=null;
      $records=$conn->query($sql);
      if ( $records == TRUE) {
          //echo "<br>Query eseguita!";
@@ -346,7 +346,13 @@
      }
      if($records->num_rows ==0){
            //	echo "la query non ha prodotto risultato";
+					 $msg.="<b style=\"text-align: center\">
+						NESSUN FILM PRESENTE 
+						</b>";
      }else{
+			 $msg.="<b style=\"text-align: center\">
+				 FILM PRESENTI
+				</b>";
        while($tupla=$records->fetch_assoc()){
          $id=$tupla["codiceFilm"];
            $foto=$tupla["foto"];
@@ -354,7 +360,7 @@
        }
     }
 
-    $msg="<br><table>";
+    $msg.="<br><table>";
 		$msg.="<tr style=\"text-align: center\">
 						<th style=\"color: black;   text-shadow: 2px 2px orange; font-size: 30px; width: 50%;\"><b style=\"text-align: center\"> FILM</b> </th>
 						<th style=\"color: black;  text-shadow: 2px 2px orange; font-size: 30px; font-size: 30px; width: 50%; text-align: center\"><b style=\"text-align: center\">
@@ -367,7 +373,7 @@
 						<td><img style=\"max-width: 500px;
 						max-height: 300px;
 						height: 300px;
-						width: 500px;\" src=\"..\Immagini\\$foto\"></img></td>";
+						width: 500px;\" src=\"..\Immagini\\extra\\$foto\"></img></td>";
 				///////////////////////////////trovo gli orari disponibili per ciascun film(id)///////////////////////////////////
 				$sql = "SELECT proiezione.orarioProiezione,proiezione.idProiezione from proiezione join film on proiezione.codiceFilm=film.codiceFilm where proiezione.codiceFilm=\"$id\" order by proiezione.orarioProiezione ASC";
 				$orario=Array();

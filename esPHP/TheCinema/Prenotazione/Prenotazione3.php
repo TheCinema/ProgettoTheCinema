@@ -28,6 +28,10 @@ $porta=$_SERVER['SERVER_PORT'];
 			</script>
 			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 			<style>
+			@font-face {
+				font-family: "font2";
+				src: url(../font2.ttf);
+			}
 			@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css");
 			@import url('https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap');
 		<style>
@@ -197,7 +201,7 @@ $porta=$_SERVER['SERVER_PORT'];
 		</style>
 	</head>
 
-<body style="background-color: #FAD961;
+<body style="background-color: #FAD961; font-family: 'font2';
 background-image: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);
 ">
 

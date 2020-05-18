@@ -303,83 +303,86 @@
 
 
 
-
-													<div class=\"titolo\">
-														<div class=\"titolohead\">
-														FILM POPOLARI
-														</div>
-														<div class=\"titoloinfo\">
-														Questi sono i film più in voga usciti al cinema, usa il mouse per sfogliare il catalogo. Corri subito a guardarli!
-														<br />
-														</div>
+												<div class=\"titolo\">
+													<div class=\"titolohead\">
+													FILM POPOLARI
 													</div>
-							<div class=\"swiper-container\"  style=\"margin-top: 40px\">
-								<div class=\"swiper-wrapper\">
-
-					";
-					///////prendo le immagini dal database//////////////////////////////
-					///////////////trovo i film disponibili per la data selezionata//////////////////////
-						$arraryImmagini=Array();
-					 $film=Array();
-					 	$sql="SELECT film.foto,film.nome from film join proiezione on film.codiceFilm=proiezione.codiceFilm order by proiezione.dataProiezione LIMIT $numeroLimiteImmagini ";
-									 $records=$conn->query($sql);
-									 if ( $records == TRUE) {
-											 //echo "<br>Query eseguita!";
-									 } else {
-										 die("Errore nella query: " . $conn->error);
-									 }
-									 if($records->num_rows ==0){
-												 //	echo "la query non ha prodotto risultato";
-
-									 }else{
-
-													 while($tupla=$records->fetch_assoc()){
-														 $immagine=$tupla["foto"];
-															 $nomeFilm=$tupla["nome"];
-															 $arraryImmagini+=Array($immagine=>$nomeFilm);
-													 }
-									}
-							foreach($arraryImmagini as $foto=>$nomeFilm){
-										$home.="
-
-										<!--  immagine
-											<div class=\"swiper-slide\">
-												<div class=\"imgBx\">
-													<img src=\"Immagini\\$foto\" />
+													<div class=\"titoloinfo\">
+													Questi sono i film più popolari usciti al cinema, usa il mouse per sfogliare il catalogo. Corri subito a guardarli!
+													<br />
+													</div>
 												</div>
-												<div class=\"details\">
-														<h3>$nomeFilm</h3>
-												</div>-->
 
 
-								 </div>";
-							}
-						$home.="
-			    	</div>
-   				<div class=\"swiper-pagination\" style=\"visibility:hidden;\"></div>
-			  </div>
+													<div class=\"swiper-container\" style=\"margin-top: 40px\">
+														<div class=\"swiper-wrapper\">
+
+																	";
+																	///////prendo le immagini dal database//////////////////////////////
+																	///////////////trovo i film disponibili per la data selezionata//////////////////////
+																		$arraryImmagini=Array();
+																	 $film=Array();
+																	 	$sql="SELECT film.foto,film.nome from film join proiezione on film.codiceFilm=proiezione.codiceFilm order by proiezione.dataProiezione LIMIT $numeroLimiteImmagini ";
+																					 $records=$conn->query($sql);
+																					 if ( $records == TRUE) {
+																							 //echo "<br>Query eseguita!";
+																					 } else {
+																						 die("Errore nella query: " . $conn->error);
+																					 }
+																					 if($records->num_rows ==0){
+																								 //	echo "la query non ha prodotto risultato";
+
+																					 }else{
+
+																									 while($tupla=$records->fetch_assoc()){
+																										 $immagine=$tupla["foto"];
+																											 $nomeFilm=$tupla["nome"];
+																											 $arraryImmagini+=Array($immagine=>$nomeFilm);
+																									 }
+																					}
+																			foreach($arraryImmagini as $foto=>$nomeFilm){
+
+																						$home.="
 
 
-			    <script type=\"text/javascript\" src=\"swiper.min.js\"></script>
+																						<!--  immagine ENDGAME -->
+																				      <div class=\"swiper-slide\">
+																				        <div class=\"imgBx\">
+																				          <img src=\"Immagini\\$foto\"/>
+																				        </div>
+																				        <div class=\"details\">
+																				            <h3>$nomeFilm</h3>
+																				        </div>
+																							</div>
 
-			    <script>
-				   var swiper = new Swiper('.swiper-container', {
-			     effect: 'coverflow',
-			     grabCursor: true,
-			     centeredSlides: true,
-			     slidesPerView: 'auto',
-			     coverflowEffect: {
-				       rotate: 50,
-				       stretch: 0,
-				       depth: 100,
-				       modifier: 1,
-				       slideShadows : true,
-			     },
-			     pagination: {
-			       el: '.swiper-pagination',
-			     },
-			   });
-			 </script>
+																						";
+																			}
+																		$home.="
+															    	</div>
+												   				<div class=\"swiper-pagination\" style=\"visibility:hidden;\"></div>
+															  </div>
+
+
+															    <script type=\"text/javascript\" src=\"swiper.min.js\"></script>
+
+															    <script>
+																   var swiper = new Swiper('.swiper-container', {
+															     effect: 'coverflow',
+															     grabCursor: true,
+															     centeredSlides: true,
+															     slidesPerView: 'auto',
+															     coverflowEffect: {
+																       rotate: 50,
+																       stretch: 0,
+																       depth: 100,
+																       modifier: 1,
+																       slideShadows : true,
+															     },
+															     pagination: {
+															       el: '.swiper-pagination',
+															     },
+															   });
+															 </script>
 
 
 					";
@@ -607,7 +610,7 @@ $_SESSION["editMode"]=null;
 
 			 <div class="footer">
 					 <p style="color:white; border-top: 2px solid black;">theCinema@gmail.com  </p>
-					 <p style="color:white;">Progetto gestione anno 2019/2020 </p>
+				<!--	 <p style="color:white;">Progetto gestione anno 2019/2020 </p> -->
 			 </div>
 </body>
 </html>
