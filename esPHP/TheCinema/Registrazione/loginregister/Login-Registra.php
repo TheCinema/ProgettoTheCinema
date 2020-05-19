@@ -10,8 +10,8 @@
 	<style>
 				body {
 					margin: 0;
-					background: rgb(253,187,45);
-					background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(34,193,195,1) 100%);
+					background-color: #FAD961;
+					background-image: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);
 					/*
 					background: #8e9eab;
 				  background: -webkit-linear-gradient(to bottom, #8e9eab, #eef2f3);

@@ -88,6 +88,8 @@
 			if($_SERVER["REQUEST_METHOD"]=="POST"){
 				   			//vedere form in basso
 				if(isset($_POST["logout"])) {
+					$_SESSION["username"]=null;
+					$_SESSION["log"]=null;
 					$_SESSION["usrLogin"]=null;
 					$_SESSION["mailLogin"]=null;
 					$_SESSION["dataLogin"]=null;

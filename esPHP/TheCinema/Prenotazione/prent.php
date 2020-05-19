@@ -204,7 +204,7 @@ $_SESSION["passDiverse"]=null;
 
         <div class="footer">
           <small>Copyright &copy; TheCinema 2020</small>
-          <small>TheCinema@gmail.com</small>
+          <small>Contatti: TheCinema@gmail.com</small>
        </div>
 
 

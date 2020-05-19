@@ -86,6 +86,7 @@
 		}
 
 		.navigation-menu{
+			font-family: 'font2';
 			float: right;
 			display: flex;
 			align-items: center;
@@ -93,9 +94,12 @@
 		}
 
 		.navigation-menu a{
+			font-family: 'font2';
+
 			margin-left: 10px;
 			color: #ddd;
 			text-transform: uppercase;
+
 			font-size: 14px;
 			padding: 12px 20px;
 			border-radius: 4px;
@@ -269,7 +273,7 @@
 
 </head>
 
-<body>
+<body style="font-family: 'font2';" >
 
 
 		<?php
@@ -283,7 +287,7 @@
 					//home senza aver effettuato il login
 					$_SESSION["editMode"]=null;
 					$home = "
-					<header>
+					<header >
 						<div class=\"inner-width\">
 							<i class=\"menu-toggle-btn fas fa-bars\"></i>
 							<nav class=\"navigation-menu\">

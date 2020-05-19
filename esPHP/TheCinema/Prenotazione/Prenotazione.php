@@ -1,6 +1,4 @@
 <?php
-	header('Cache-Control: no cache'); //no cache
-  session_cache_limiter('private_no_expire'); // works
 	session_start();
 	$ip=$_SERVER['SERVER_NAME'];  //server per vedere sei sei localhost o hai un ip
 	$porta=$_SERVER['SERVER_PORT'];   //porta del serve, perchè c'è chi ha 80, chi 8080 etc...
@@ -269,22 +267,38 @@
 <body>
 	<?php
 		//Per sistemare il problema del ERR_CACHE_MISS
+	if(empty($_SESSION["log"])){
+			$msg1="
+			<header>
+				<div class=\"inner-width\">
 
+					<i class=\"menu-toggle-btn fas fa-bars\"></i>
+					<nav class=\"navigation-menu\">
+						<a href=\"../Home.php\"><i class=\"fas fa-home home\"></i> HOME</a>
+						<a href=\"Prenotazione.php\"><i class=\"fas fa-align-left about\"></i>PRENOTA BIGLIETTO</a>
+						<a href=\"../Registrazione/loginregister/Login-Registra.php\"><i class=\"fab fa-buffer works\"></i> REGISTRATI-LOGIN</a>
+
+					</nav>
+				</div>
+			</header>";
+		}else{
+			$msg1="
+			<header>
+				<div class=\"inner-width\">
+
+					<i class=\"menu-toggle-btn fas fa-bars\"></i>
+					<nav class=\"navigation-menu\">
+						<a href=\"../Home.php\"><i class=\"fas fa-home home\"></i> HOME</a>
+						<a href=\"Prenotazione.php\"><i class=\"fas fa-align-left about\"></i>PRENOTA BIGLIETTO</a>
+						<a href=\"../AreaPersonale/areaLogin.php\"><i class=\"fab fa-buffer works\"></i> AREA PERSONALE</a>
+
+					</nav>
+				</div>
+			</header>";
+
+		}
+		echo $msg1;
 	?>
-
-	<header>
-		<div class="inner-width">
-
-			<i class="menu-toggle-btn fas fa-bars"></i>
-			<nav class="navigation-menu">
-				<a href="../Home.php"><i class="fas fa-home home"></i> HOME</a>
-				<a href="Prenotazione.php"><i class="fas fa-align-left about"></i>PRENOTA BIGLIETTO</a>
-				<a href="../AreaPersonale/areaLogin.php"><i class="fab fa-buffer works"></i> AREA PERSONALE</a>
-
-			</nav>
-		</div>
-	</header>
-
  <div class="container">
       <ul class="progressbar">
           <li class="active">FILM</li>
@@ -347,7 +361,7 @@
      if($records->num_rows ==0){
            //	echo "la query non ha prodotto risultato";
 					 $msg.="<b style=\"text-align: center\">
-						NESSUN FILM PRESENTE 
+						NESSUN FILM PRESENTE
 						</b>";
      }else{
 			 $msg.="<b style=\"text-align: center\">
